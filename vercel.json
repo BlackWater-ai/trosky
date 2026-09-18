@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/events",
+      "destination": "https://trosky-4222.vercel.app/",
+      "permanent": false
+    },
+    {
+      "source": "/events-venue",
+      "destination": "https://trosky-4222.vercel.app/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
