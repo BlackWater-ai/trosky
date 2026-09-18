@@ -230,10 +230,10 @@ export default function Home() {
                 label: 'Buy a Day Pass',
               },
               {
-                title: 'Train',
-                items: ['Private lessons', 'Group clinics', 'Youth & multi-sport camps', 'Performance training', 'Team training'],
-                to: '/coaches',
-                label: 'See Programming',
+                title: 'Host Your Event',
+                items: ['Celebrations & parties', 'Corporate gatherings', 'Watch parties', 'Tournaments', 'Community events'],
+                href: EVENTS_VENUE_URL,
+                label: 'Explore Event Hosting',
               },
               {
                 title: 'Gather',
