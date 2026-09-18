@@ -4,21 +4,21 @@
 
 @layer base {
   :root {
-    --background: 40 25% 97%;
-    --foreground: 218 42% 10%;
-    --primary: 215 52% 16%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 40 18% 94%;
-    --secondary-foreground: 218 42% 10%;
-    --muted: 40 12% 92%;
-    --muted-foreground: 218 12% 40%;
-    --accent: 215 52% 16%;
+    --background: 36 29% 97%;
+    --foreground: 240 8% 5%;
+    --primary: 18 100% 52%;
+    --primary-foreground: 240 8% 5%;
+    --secondary: 36 19% 92%;
+    --secondary-foreground: 240 8% 5%;
+    --muted: 36 13% 89%;
+    --muted-foreground: 240 4% 36%;
+    --accent: 185 100% 36%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border: 215 16% 86%;
-    --input: 215 16% 86%;
-    --ring: 215 52% 16%;
+    --border: 25 16% 82%;
+    --input: 25 16% 82%;
+    --ring: 18 100% 52%;
     --radius: 0.5rem;
   }
 
@@ -32,6 +32,11 @@
 
   body {
     @apply bg-background text-foreground font-inter antialiased;
+  }
+
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
   }
 
   a:focus-visible,

@@ -39,15 +39,19 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="relative bg-[#0b1220] text-white overflow-hidden">
+      <div className="relative bg-[#090a0c] text-white overflow-hidden">
         <div className="absolute inset-y-0 right-0 w-1/3 hidden lg:block pointer-events-none">
           <img src={PHOTOS.courts} alt="" className="w-full h-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#0b1220]" />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#090a0c]" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 grid md:grid-cols-3 gap-12">
           <div>
-            <p className="font-display text-2xl tracking-[0.16em] mb-4">TROSKY SPORTS CLUB</p>
+            <img
+              src="/trosky-sports-club-logo.png"
+              alt="Trosky Sports Club"
+              className="h-28 w-28 object-contain -ml-2 mb-3"
+            />
             <p className="font-inter text-sm text-white/70 leading-relaxed max-w-sm">
               Austin&apos;s community sports facility. Built for families, athletes, teams, and the entire community.
             </p>
@@ -116,7 +120,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="relative z-10 border-t border-white/10">
+        <div className="relative z-10 border-t border-accent/30">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
             <p className="font-inter text-xs text-white/50">
               © 2026 Trosky Sports Club · Austin, TX · All rights reserved.

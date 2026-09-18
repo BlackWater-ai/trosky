@@ -4,8 +4,8 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 import { MORE_LINKS, NAV_LINKS } from '@/lib/constants';
 
 const linkClass = ({ isActive }) =>
-  `font-inter text-[12px] tracking-wide whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${
-    isActive ? 'text-primary font-semibold' : 'text-foreground/80 hover:text-primary'
+  `font-inter text-[12px] tracking-wide whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c] rounded-sm ${
+    isActive ? 'text-primary font-semibold' : 'text-white/80 hover:text-primary'
   }`;
 
 function NavItem({ link, onClick, className }) {
@@ -96,17 +96,18 @@ export default function Navbar() {
   }, [moreOpen]);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
+    <header className="fixed top-0 inset-x-0 z-50 bg-[#090a0c]/95 text-white backdrop-blur-sm border-b border-accent/60">
       <div className="max-w-7xl mx-auto px-4 lg:px-6 h-16 lg:h-20 flex items-center justify-between gap-3">
         <Link
           to="/"
-          className="flex-shrink-0 leading-none rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          className="flex-shrink-0 leading-none rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c]"
           onClick={() => setOpen(false)}
         >
-          <p className="font-display text-xl md:text-2xl tracking-[0.18em] text-foreground">TROSKY</p>
-          <p className="font-inter text-[10px] tracking-[0.28em] uppercase text-muted-foreground mt-0.5">
-            Sports Club
-          </p>
+          <img
+            src="/trosky-sports-club-logo.png"
+            alt="Trosky Sports Club"
+            className="h-12 w-12 md:h-14 md:w-14 object-contain"
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-3 xl:gap-4" aria-label="Primary">
@@ -114,14 +115,14 @@ export default function Navbar() {
             <NavItem
               key={link.label}
               link={link}
-              className="font-inter text-[12px] tracking-wide whitespace-nowrap text-foreground/80 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
+              className="font-inter text-[12px] tracking-wide whitespace-nowrap text-white/80 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c] rounded-sm"
             />
           ))}
           <div className="relative">
             <button
               type="button"
               ref={moreButtonRef}
-              className="inline-flex items-center gap-1 font-inter text-[12px] tracking-wide text-foreground/80 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
+              className="inline-flex items-center gap-1 font-inter text-[12px] tracking-wide text-white/80 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c] rounded-sm"
               aria-expanded={moreOpen}
               aria-controls={moreId}
               aria-haspopup="true"
@@ -133,7 +134,7 @@ export default function Navbar() {
               <div
                 id={moreId}
                 ref={morePanelRef}
-                className="absolute right-0 mt-3 min-w-[180px] bg-white border border-border rounded-md shadow-lg py-2"
+                className="absolute right-0 mt-3 min-w-[180px] bg-[#15171a] border border-white/10 rounded-md shadow-lg py-2"
               >
                 {MORE_LINKS.map((link) => (
                   <NavLink
@@ -141,8 +142,8 @@ export default function Navbar() {
                     to={link.to}
                     onClick={() => closeMore(false)}
                     className={({ isActive }) =>
-                      `block px-4 py-2 font-inter text-sm focus-visible:outline-none focus-visible:bg-secondary ${
-                        isActive ? 'text-primary font-semibold' : 'text-foreground hover:bg-secondary'
+                      `block px-4 py-2 font-inter text-sm focus-visible:outline-none focus-visible:bg-white/10 ${
+                        isActive ? 'text-primary font-semibold' : 'text-white/85 hover:bg-white/10'
                       }`
                     }
                   >
@@ -157,14 +158,14 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             to="/contact-us"
-            className="hidden sm:inline-flex bg-primary text-primary-foreground px-4 py-2.5 font-inter font-bold text-[11px] tracking-wider uppercase rounded-sm hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            className="hidden sm:inline-flex bg-primary text-primary-foreground px-4 py-2.5 font-inter font-bold text-[11px] tracking-wider uppercase rounded-sm hover:bg-[#ff6d27] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c]"
           >
             Schedule a Tour
           </Link>
           <button
             type="button"
             ref={menuButtonRef}
-            className="lg:hidden p-2 text-foreground rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            className="lg:hidden p-2 text-white rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c]"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls={menuId}
@@ -179,7 +180,7 @@ export default function Navbar() {
         <div
           id={menuId}
           ref={panelRef}
-          className="lg:hidden bg-white border-t border-border px-6 py-4 space-y-1"
+          className="lg:hidden bg-[#090a0c] border-t border-white/10 px-6 py-4 space-y-1"
         >
           {[...NAV_LINKS, ...MORE_LINKS].map((link) =>
             link.href ? (
@@ -189,7 +190,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={closeMobile}
-                className="block py-2.5 font-inter text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+                className="block py-2.5 font-inter text-sm text-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
                 aria-label={`${link.label} (opens in a new tab)`}
               >
                 {link.label}
@@ -202,7 +203,7 @@ export default function Navbar() {
                 onClick={closeMobile}
                 className={({ isActive }) =>
                   `block py-2.5 font-inter text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm ${
-                    isActive ? 'text-primary font-semibold' : 'text-foreground'
+                    isActive ? 'text-primary font-semibold' : 'text-white/90'
                   }`
                 }
               >
@@ -213,7 +214,7 @@ export default function Navbar() {
           <Link
             to="/contact-us"
             onClick={closeMobile}
-            className="mt-3 sm:hidden inline-flex bg-primary text-primary-foreground px-4 py-3 font-inter font-bold text-xs tracking-wider uppercase rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+            className="mt-3 sm:hidden inline-flex bg-primary text-primary-foreground px-4 py-3 font-inter font-bold text-xs tracking-wider uppercase rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0c] focus-visible:ring-primary"
           >
             Schedule a Tour
           </Link>

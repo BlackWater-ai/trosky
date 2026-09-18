@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         inter: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Oswald', 'sans-serif'],
+        display: ['Bebas Neue', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',

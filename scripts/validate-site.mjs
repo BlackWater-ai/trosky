@@ -95,6 +95,23 @@ for (const needle of ['rel="canonical"', 'og:title', 'og:description', 'og:image
   if (!indexHtml.includes(needle)) fail(`index.html missing SEO: ${needle}`);
 }
 
+if (!indexHtml.includes('Bebas+Neue')) {
+  fail('Base44 display font (Bebas Neue) must be loaded');
+}
+
+const logoPath = join(ROOT, 'public', 'trosky-sports-club-logo.png');
+try {
+  statSync(logoPath);
+} catch {
+  fail('Trosky logo asset must be present in public/trosky-sports-club-logo.png');
+}
+
+for (const file of [join(SRC, 'components/Navbar.jsx'), join(SRC, 'components/Footer.jsx')]) {
+  if (!readFileSync(file, 'utf8').includes('trosky-sports-club-logo.png')) {
+    fail(`${relative(ROOT, file)} must display the approved Trosky crest`);
+  }
+}
+
 if (!failed) {
   console.log('validate-site: all checks passed');
   process.exit(0);
