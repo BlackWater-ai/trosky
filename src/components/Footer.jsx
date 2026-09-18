@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { ArrowRight, Facebook, Instagram, Mail, Phone } from 'lucide-react';
+import SmartLink from './SmartLink';
 import { ADDRESS, CONTACTS, FLUID_BOOKING, FOOTER_LINKS, SOCIAL } from '@/lib/constants';
 import { PHOTOS } from '@/lib/photos';
 
@@ -15,6 +15,7 @@ export default function Footer() {
   const mid = Math.ceil(FOOTER_LINKS.length / 2);
   const col1 = FOOTER_LINKS.slice(0, mid);
   const col2 = FOOTER_LINKS.slice(mid);
+  const linkClass = 'font-inter text-sm text-white/85 hover:text-white transition-colors py-0.5';
 
   return (
     <footer>
@@ -30,7 +31,7 @@ export default function Footer() {
               href={FLUID_BOOKING}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 font-inter font-semibold text-sm text-foreground hover:text-primary transition-colors"
+              className="inline-flex items-center gap-2 font-inter font-semibold text-sm text-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm"
             >
               Open Fluid Booking <ArrowRight className="w-4 h-4" />
             </a>
@@ -39,7 +40,7 @@ export default function Footer() {
       </div>
 
       <div className="relative bg-[#0b1220] text-white overflow-hidden">
-        <div className="absolute inset-y-0 right-0 w-1/3 hidden lg:block">
+        <div className="absolute inset-y-0 right-0 w-1/3 hidden lg:block pointer-events-none">
           <img src={PHOTOS.courts} alt="" className="w-full h-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#0b1220]" />
         </div>
@@ -48,34 +49,30 @@ export default function Footer() {
           <div>
             <p className="font-display text-2xl tracking-[0.16em] mb-4">TROSKY SPORTS CLUB</p>
             <p className="font-inter text-sm text-white/70 leading-relaxed max-w-sm">
-              Austin&apos;s community sports facility and event venue. Built for families, athletes, teams, and
-              the entire community.
+              Austin&apos;s community sports facility. Built for families, athletes, teams, and the entire community.
             </p>
           </div>
 
           <div>
             <p className="font-inter text-xs tracking-[0.25em] uppercase text-white/50 mb-5">Quick Links</p>
             <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-              {[...col1.map((l, i) => [l, col2[i]])].map(([left, right], i) => (
-                <div key={i} className="contents">
-                  <Link
-                    to={left.to}
-                    className="font-inter text-sm text-white/85 hover:text-white transition-colors py-0.5"
-                  >
-                    {left.label}
-                  </Link>
-                  {right ? (
-                    <Link
-                      to={right.to}
-                      className="font-inter text-sm text-white/85 hover:text-white transition-colors py-0.5"
-                    >
-                      {right.label}
-                    </Link>
-                  ) : (
-                    <span />
-                  )}
-                </div>
-              ))}
+              {col1.map((left, i) => {
+                const right = col2[i];
+                return (
+                  <div key={left.label} className="contents">
+                    <SmartLink to={left.to} href={left.href} className={linkClass}>
+                      {left.label}
+                    </SmartLink>
+                    {right ? (
+                      <SmartLink to={right.to} href={right.href} className={linkClass}>
+                        {right.label}
+                      </SmartLink>
+                    ) : (
+                      <span />
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -89,29 +86,29 @@ export default function Footer() {
                   <p className="font-inter text-xs tracking-widest uppercase text-white/45">{person.label}</p>
                   <a
                     href={`mailto:${person.email}`}
-                    className="flex items-center gap-2 font-inter text-sm text-white/85 hover:text-white break-all"
+                    className="flex items-center gap-2 font-inter text-sm text-white/85 hover:text-white break-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-sm"
                   >
-                    <Mail className="w-3.5 h-3.5 flex-shrink-0" />
+                    <Mail className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
                     {person.email}
                   </a>
                   <a
                     href={`tel:${person.tel}`}
-                    className="flex items-center gap-2 font-inter text-sm text-white/85 hover:text-white"
+                    className="flex items-center gap-2 font-inter text-sm text-white/85 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-sm"
                   >
-                    <Phone className="w-3.5 h-3.5 flex-shrink-0" />
+                    <Phone className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
                     {person.phone}
                   </a>
                 </div>
               ))}
               <p className="font-inter text-xs text-white/50">{ADDRESS}</p>
               <div className="flex items-center gap-4 pt-1">
-                <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="text-white/80 hover:text-white">
+                <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-sm">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href={SOCIAL.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="text-white/80 hover:text-white">
+                <a href={SOCIAL.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-sm">
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href={SOCIAL.tiktok} target="_blank" rel="noreferrer" aria-label="TikTok" className="text-white/80 hover:text-white">
+                <a href={SOCIAL.tiktok} target="_blank" rel="noreferrer" aria-label="TikTok" className="text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-sm">
                   <TikTokIcon className="w-5 h-5" />
                 </a>
               </div>
@@ -128,7 +125,7 @@ export default function Footer() {
               href={FLUID_BOOKING}
               target="_blank"
               rel="noreferrer"
-              className="font-inter text-xs text-white/50 hover:text-white/80"
+              className="font-inter text-xs text-white/50 hover:text-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 rounded-sm"
             >
               Online booking →
             </a>

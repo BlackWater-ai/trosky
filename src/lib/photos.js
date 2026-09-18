@@ -1,7 +1,6 @@
 const BASE = 'https://media.base44.com/images/public/69f3a4d87763e987202433ad';
 
 export const PHOTOS = {
-  logoMark: `${BASE}/0d655cdab_image.png`,
   hangout: `${BASE}/27c86b424_TroskyEventCenter-27.jpg`,
   vipLounge: `${BASE}/3d159a6f6_TroskyEventCenter-21.png`,
   coldPlunge: `${BASE}/55515803e_TroskyEventCenter-12.png`,

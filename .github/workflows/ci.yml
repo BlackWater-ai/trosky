@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: [main, 'cursor/**']
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Clean install
+        run: npm ci
+      - name: Production build
+        run: npm run build
+      - name: Route and content validation
+        run: npm run validate

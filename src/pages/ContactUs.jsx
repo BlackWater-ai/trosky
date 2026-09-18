@@ -4,7 +4,7 @@ import { ArrowRight, Mail, Phone } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { CONTACTS, REASON_OPTIONS } from '@/lib/constants';
+import { CONTACTS, EVENTS_VENUE_URL, REASON_OPTIONS } from '@/lib/constants';
 
 const faqs = [
   {
@@ -34,7 +34,7 @@ const faqs = [
   {
     question: 'Can I host an event at Trosky?',
     answer:
-      'Yes. Trosky offers event and venue rental options for celebrations, corporate events, team gatherings, watch parties, and community events. Visit our Events page to explore options and submit an inquiry.',
+      'Yes. Trosky offers event and venue rental options for celebrations, corporate events, team gatherings, watch parties, and community events. Visit the Events Venue site to explore options and submit an inquiry.',
   },
   {
     question: 'Do you offer youth camps?',
@@ -126,18 +126,18 @@ export default function ContactUs() {
                 <p className="font-inter text-xs tracking-widest uppercase text-muted-foreground font-semibold mb-3">
                   {person.label}
                 </p>
-                <a
-                  href={`mailto:${person.email}`}
-                  className="flex items-center gap-2 font-inter text-sm text-foreground hover:text-primary transition-colors break-all"
-                >
-                  <Mail className="w-4 h-4 text-primary flex-shrink-0" /> {person.email}
-                </a>
-                <a
-                  href={`tel:${person.tel}`}
-                  className="flex items-center gap-2 font-inter text-sm text-foreground hover:text-primary transition-colors"
-                >
-                  <Phone className="w-4 h-4 text-primary flex-shrink-0" /> {person.phone}
-                </a>
+                  <a
+                    href={`mailto:${person.email}`}
+                    className="flex items-center gap-2 font-inter text-sm text-foreground hover:text-primary transition-colors break-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+                  >
+                    <Mail className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" /> {person.email}
+                  </a>
+                  <a
+                    href={`tel:${person.tel}`}
+                    className="flex items-center gap-2 font-inter text-sm text-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+                  >
+                    <Phone className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" /> {person.phone}
+                  </a>
               </div>
             ))}
           </div>
@@ -149,7 +149,7 @@ export default function ContactUs() {
             className="mb-12"
           >
             <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-3 font-medium">Get In Touch</p>
-            <h2 className="font-display text-4xl md:text-5xl text-foreground tracking-wider mb-4">
+            <h2 className="font-display text-4xl md:text-5xl text-foreground tracking-wider">
               General Contact Form
             </h2>
           </motion.div>
@@ -159,10 +159,20 @@ export default function ContactUs() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               className="bg-white border border-border rounded-xl p-14 text-center"
+              role="status"
             >
-              <div className="text-5xl mb-5">✅</div>
-              <p className="font-display text-3xl text-foreground tracking-wider mb-3">Message Sent!</p>
-              <p className="font-inter text-muted-foreground">Our team will get back to you soon.</p>
+              <p className="font-display text-3xl text-foreground tracking-wider mb-3">Form submitted</p>
+              <p className="font-inter text-muted-foreground">
+                If you don&apos;t hear back, email{' '}
+                <a className="underline" href="mailto:Gabe@troskysportsclub.com">
+                  Gabe@troskysportsclub.com
+                </a>{' '}
+                or call{' '}
+                <a className="underline" href="tel:2106328160">
+                  210-632-8160
+                </a>
+                .
+              </p>
             </motion.div>
           ) : (
             <motion.form
@@ -175,52 +185,56 @@ export default function ContactUs() {
             >
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="font-inter text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
+                  <label htmlFor="contact-name" className="font-inter text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
                     Name *
                   </label>
                   <input
+                    id="contact-name"
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full border border-border rounded-sm px-4 py-3 font-inter text-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full border border-border rounded-sm px-4 py-3 font-inter text-sm bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label className="font-inter text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
+                  <label htmlFor="contact-phone" className="font-inter text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
                     Phone
                   </label>
                   <input
+                    id="contact-phone"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full border border-border rounded-sm px-4 py-3 font-inter text-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full border border-border rounded-sm px-4 py-3 font-inter text-sm bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="(512) 000-0000"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="font-inter text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
+                <label htmlFor="contact-email" className="font-inter text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
                   Email *
                 </label>
                 <input
+                  id="contact-email"
                   required
                   type="email"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full border border-border rounded-sm px-4 py-3 font-inter text-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full border border-border rounded-sm px-4 py-3 font-inter text-sm bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="you@email.com"
                 />
               </div>
 
               <div>
-                <label className="font-inter text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
+                <label htmlFor="contact-reason" className="font-inter text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
                   What are you reaching out about?
                 </label>
                 <select
+                  id="contact-reason"
                   value={form.reason}
                   onChange={(e) => setForm({ ...form, reason: e.target.value })}
-                  className="w-full border border-border rounded-sm px-4 py-3 font-inter text-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full border border-border rounded-sm px-4 py-3 font-inter text-sm bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <option value="">Select a reason</option>
                   {REASON_OPTIONS.map((option) => (
@@ -232,14 +246,15 @@ export default function ContactUs() {
               </div>
 
               <div>
-                <label className="font-inter text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
+                <label htmlFor="contact-message" className="font-inter text-xs text-muted-foreground uppercase tracking-widest mb-2 block">
                   Message
                 </label>
                 <textarea
+                  id="contact-message"
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   rows={5}
-                  className="w-full border border-border rounded-sm px-4 py-3 font-inter text-sm bg-background focus:outline-none focus:ring-1 focus:ring-primary resize-none"
+                  className="w-full border border-border rounded-sm px-4 py-3 font-inter text-sm bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                   placeholder="Tell us how we can help..."
                 />
               </div>
@@ -247,11 +262,15 @@ export default function ContactUs() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-primary text-primary-foreground py-4 font-inter font-bold text-sm tracking-wider uppercase rounded-sm hover:opacity-90 transition-opacity disabled:opacity-60"
+                className="w-full bg-primary text-primary-foreground py-4 font-inter font-bold text-sm tracking-wider uppercase rounded-sm hover:opacity-90 transition-opacity disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 {loading ? 'Sending...' : 'Submit Message'}
               </button>
-              {error && <p className="font-inter text-sm text-red-600 text-center">{error}</p>}
+              {error && (
+                <p className="font-inter text-sm text-red-600 text-center" role="alert">
+                  {error}
+                </p>
+              )}
             </motion.form>
           )}
         </div>
@@ -285,7 +304,23 @@ export default function ContactUs() {
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="pb-4 font-inter text-sm text-muted-foreground leading-relaxed">
-                    {faq.answer}
+                    {faq.question === 'Can I host an event at Trosky?' ? (
+                      <>
+                        Yes. Trosky offers event and venue rental options for celebrations, corporate events, team
+                        gatherings, watch parties, and community events.{' '}
+                        <a
+                          href={EVENTS_VENUE_URL}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-primary underline underline-offset-2"
+                        >
+                          Visit the Events Venue site
+                        </a>{' '}
+                        to explore options and submit an inquiry.
+                      </>
+                    ) : (
+                      faq.answer
+                    )}
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -310,8 +345,9 @@ export default function ContactUs() {
               team member.
             </p>
             <button
+              type="button"
               onClick={() => scrollTo('#form')}
-              className="bg-white text-primary px-8 py-4 font-inter font-bold text-sm tracking-wider uppercase rounded-sm hover:bg-white/90 transition-opacity inline-flex items-center justify-center gap-2"
+              className="bg-white text-primary px-8 py-4 font-inter font-bold text-sm tracking-wider uppercase rounded-sm hover:bg-white/90 transition-opacity inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
             >
               Submit A Question <ArrowRight className="w-4 h-4" />
             </button>

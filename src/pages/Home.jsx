@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { FLUID_BOOKING, FLUID_MEMBERSHIP, STORY_VIDEO } from '@/lib/constants';
+import { EVENTS_VENUE_URL, FLUID_BOOKING, FLUID_MEMBERSHIP, STORY_VIDEO } from '@/lib/constants';
 import { PHOTOS } from '@/lib/photos';
 
 const glance = [
@@ -33,7 +33,8 @@ const glance = [
   {
     icon: Tent,
     title: 'Events & Venue Space',
-    desc: 'Celebrations, corporate outings, watch parties, movie nights, food truck events, camps, and community gatherings.',
+    desc: 'Weddings, corporate outings, celebrations, and private rentals are hosted on the Events Venue site.',
+    href: EVENTS_VENUE_URL,
   },
   {
     icon: Snowflake,
@@ -56,11 +57,11 @@ const spaces = [
   { title: 'BBQ & Hangout Areas', img: PHOTOS.hangout, to: '/facility' },
 ];
 
-const events = [
-  { tag: 'Open Play', title: 'Open Play Night', when: 'Every Friday · 6:00 PM – 10:00 PM', desc: 'Join us for open play, games, and community time at the facility.' },
-  { tag: 'Camps', title: 'Youth Sports Camp', when: 'Seasonal · Morning & Afternoon Sessions', desc: 'Multi-sport camp opportunities for kids and young athletes.' },
-  { tag: 'Community', title: 'Movie Night on the Turf', when: 'Monthly · 8:00 PM – 11:00 PM', desc: 'A community movie night experience on the turf field with the large outdoor screen.' },
-  { tag: 'Pickleball', title: 'Pickleball Social', when: 'Every Saturday · 10:00 AM – 1:00 PM', desc: 'Casual pickleball play, music, and hangout time.' },
+const clubPrograms = [
+  { tag: 'Open Play', title: 'Open Play Night', when: 'Every Friday · 6:00 PM – 10:00 PM', desc: 'Join us for open play, games, and community time at the facility.', to: '/reservations', cta: 'Book a Court' },
+  { tag: 'Camps', title: 'Youth Sports Camp', when: 'Seasonal · Morning & Afternoon Sessions', desc: 'Multi-sport camp opportunities for kids and young athletes.', to: '/camps', cta: 'View Camps' },
+  { tag: 'Community', title: 'Movie Night on the Turf', when: 'Monthly · 8:00 PM – 11:00 PM', desc: 'A community movie night experience on the turf field with the large outdoor screen.', to: '/contact-us', cta: 'Ask About Dates' },
+  { tag: 'Pickleball', title: 'Pickleball Social', when: 'Every Saturday · 10:00 AM – 1:00 PM', desc: 'Casual pickleball play, music, and hangout time.', to: '/reservations', cta: 'Reserve a Court' },
 ];
 
 export default function Home() {
@@ -152,22 +153,35 @@ export default function Home() {
             <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider">Facility At A Glance</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {glance.map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="bg-secondary border border-border rounded-xl p-7"
-              >
-                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center rounded-sm mb-5">
-                  <item.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-display text-xl text-foreground tracking-wider mb-3">{item.title}</h3>
-                <p className="font-inter text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
+            {glance.map((item, i) => {
+              const inner = (
+                <>
+                  <div className="w-12 h-12 bg-primary/10 flex items-center justify-center rounded-sm mb-5">
+                    <item.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-display text-xl text-foreground tracking-wider mb-3">{item.title}</h3>
+                  <p className="font-inter text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                </>
+              );
+              const className = 'bg-secondary border border-border rounded-xl p-7 h-full block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary';
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                >
+                  {item.href ? (
+                    <a href={item.href} target="_blank" rel="noreferrer" className={className}>
+                      {inner}
+                    </a>
+                  ) : (
+                    <div className={className}>{inner}</div>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -224,7 +238,7 @@ export default function Home() {
               {
                 title: 'Gather',
                 items: ['Celebrations & parties', 'Corporate gatherings', 'Watch parties', 'Tournaments', 'Community events'],
-                to: '/events',
+                href: EVENTS_VENUE_URL,
                 label: 'Explore Event Hosting',
               },
             ].map((col) => (
@@ -237,9 +251,20 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <Link to={col.to} className="font-inter font-bold text-xs tracking-wider uppercase text-primary inline-flex items-center gap-2">
-                  {col.label} <ArrowRight className="w-4 h-4" />
-                </Link>
+                {col.href ? (
+                  <a
+                    href={col.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-inter font-bold text-xs tracking-wider uppercase text-primary inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+                  >
+                    {col.label} <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <Link to={col.to} className="font-inter font-bold text-xs tracking-wider uppercase text-primary inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
+                    {col.label} <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -250,10 +275,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-3 font-medium">What&apos;s On</p>
-            <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider">Upcoming Events at Trosky</h2>
+            <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider">Play, Camps & Community</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {events.map((event) => (
+            {clubPrograms.map((event) => (
               <div key={event.title} className="bg-white border border-border rounded-xl p-6">
                 <span className="font-inter text-xs font-bold tracking-widest uppercase text-primary bg-primary/10 px-3 py-1 rounded-full">
                   {event.tag}
@@ -261,11 +286,21 @@ export default function Home() {
                 <h3 className="font-display text-2xl text-foreground tracking-wider mt-4 mb-2">{event.title}</h3>
                 <p className="font-inter text-xs text-muted-foreground uppercase tracking-wide mb-3">{event.when}</p>
                 <p className="font-inter text-sm text-muted-foreground leading-relaxed mb-4">{event.desc}</p>
-                <Link to="/events" className="font-inter font-semibold text-xs tracking-wider uppercase text-primary">
-                  View Events
+                <Link to={event.to} className="font-inter font-semibold text-xs tracking-wider uppercase text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm">
+                  {event.cta}
                 </Link>
               </div>
             ))}
+          </div>
+          <div className="mt-10 text-center">
+            <a
+              href={EVENTS_VENUE_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 font-inter font-bold text-sm tracking-wider uppercase text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+            >
+              Host a wedding, corporate, or private event <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </a>
           </div>
         </div>
       </section>

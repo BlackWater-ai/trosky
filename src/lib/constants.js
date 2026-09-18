@@ -1,8 +1,12 @@
+export const SITE_URL = 'https://troskysportsclub.com';
+export const EVENTS_VENUE_URL = 'https://trosky-4222.vercel.app/';
 export const FLUID_BOOKING = 'https://trosky.fluidpb.com/reservations';
 export const FLUID_MEMBERSHIP = 'https://trosky.fluidpb.com/become-a-member';
 export const ADDRESS = '2105 Scott Ln, Austin, TX 78734';
 export const HOURS = 'Mon–Sun: 7am – 10pm';
 export const STORY_VIDEO = 'https://www.youtube.com/watch?v=AWecRQkdnWg';
+export const OG_IMAGE =
+  'https://media.base44.com/images/public/69f3a4d87763e987202433ad/fe08d87d7_TroskyEventCenter-5.jpg';
 
 export const CONTACTS = [
   {
@@ -41,15 +45,24 @@ export const NAV_LINKS = [
   { label: 'Facility', to: '/facility' },
   { label: 'Day Passes / Memberships', to: '/day-passes' },
   { label: 'Reservations', to: '/reservations' },
-  { label: 'Events / Venue', to: '/events' },
+  { label: 'Events & Venue', href: EVENTS_VENUE_URL },
   { label: 'Coaches', to: '/coaches' },
   { label: 'Partner With Us', to: '/partner-with-us' },
   { label: 'Contact', to: '/contact-us' },
 ];
 
+export const MORE_LINKS = [
+  { label: 'Camps', to: '/camps' },
+  { label: 'Gallery', to: '/gallery' },
+  { label: 'Our Story', to: '/our-story' },
+  { label: 'Partners', to: '/partners' },
+  { label: 'Policies', to: '/policies' },
+  { label: 'VIP', to: '/vip' },
+];
+
 export const FOOTER_LINKS = [
   { label: 'Facility', to: '/facility' },
-  { label: 'Upcoming Events', to: '/events' },
+  { label: 'Events & Venue', href: EVENTS_VENUE_URL },
   { label: 'Programs', to: '/camps' },
   { label: 'Partners', to: '/partners' },
   { label: 'Policies', to: '/policies' },

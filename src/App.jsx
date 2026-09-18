@@ -1,10 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
+import Seo from './components/Seo';
 import Home from './pages/Home';
 import Facility from './pages/Facility';
 import DayPasses from './pages/DayPasses';
 import Reservations from './pages/Reservations';
-import Events from './pages/Events';
+import EventsRedirect from './pages/EventsRedirect';
 import Coaches from './pages/Coaches';
 import PartnerWithUs from './pages/PartnerWithUs';
 import ContactUs from './pages/ContactUs';
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
+      <Seo />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/facility" element={<Facility />} />
@@ -27,8 +29,8 @@ export default function App() {
         <Route path="/memberships" element={<DayPasses />} />
         <Route path="/day-passes-memberships" element={<DayPasses />} />
         <Route path="/reservations" element={<Reservations />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/events-venue" element={<Events />} />
+        <Route path="/events" element={<EventsRedirect />} />
+        <Route path="/events-venue" element={<EventsRedirect />} />
         <Route path="/coaches" element={<Coaches />} />
         <Route path="/partner-with-us" element={<PartnerWithUs />} />
         <Route path="/partner-with-trosky" element={<PartnerWithUs />} />
