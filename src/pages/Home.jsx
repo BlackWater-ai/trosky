@@ -236,10 +236,10 @@ export default function Home() {
                 label: 'Explore Event Hosting',
               },
               {
-                title: 'Gather',
-                items: ['Celebrations & parties', 'Corporate gatherings', 'Watch parties', 'Tournaments', 'Community events'],
-                href: EVENTS_VENUE_URL,
-                label: 'Explore Event Hosting',
+                title: 'Learn & Develop',
+                items: ['Private lessons', 'Group clinics', 'Youth & multi-sport camps', 'Performance training', 'Team training'],
+                to: '/coaches',
+                label: 'See Programming',
               },
             ].map((col) => (
               <div key={col.title} className="bg-secondary border border-border rounded-xl p-8 flex flex-col">
