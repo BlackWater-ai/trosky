@@ -71,7 +71,17 @@ export default function Home() {
 
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-foreground">
         <div className="absolute inset-0">
-          <img src={PHOTOS.courts} alt="Trosky Sports Club pickleball courts" className="w-full h-full object-cover opacity-40" />
+          <video
+            className="w-full h-full object-cover opacity-55"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={PHOTOS.courts}
+            aria-label="Trosky Sports Club in action"
+          >
+            <source src="/trosky-event-hero.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/80 to-foreground/30" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-36">
