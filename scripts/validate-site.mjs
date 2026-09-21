@@ -33,6 +33,11 @@ function fail(msg) {
   console.error(`FAIL: ${msg}`);
 }
 
+const styles = readFileSync(join(SRC, 'index.css'), 'utf8');
+for (const token of ['--base44-ink', '--base44-orange', '.base44-eyebrow', '.base44-panel']) {
+  if (!styles.includes(token)) fail(`Base44 visual token missing: ${token}`);
+}
+
 const internalEvents = /(to|href)\s*=\s*['"`]\/events(?:-venue)?['"`]|to:\s*['"`]\/events(?:-venue)?['"`]/g;
 
 for (const file of files) {
@@ -84,10 +89,34 @@ const contactPage = readFileSync(join(SRC, 'pages/ContactUs.jsx'), 'utf8');
 if (contactPage.includes('For event rentals and camps')) {
   fail('Helper copy under General Contact Form must stay removed');
 }
+if (!contactPage.includes("fetch('https://formsubmit.co/ajax/Gabe@troskysportsclub.com'")) {
+  fail('Contact form must send to Gabe as primary recipient');
+}
+if (!contactPage.includes("_cc: 'Troy@troskysportsclub.com'")) {
+  fail('Contact form must copy Troy Fulks');
+}
+if (!contactPage.includes('space-y-3 border-t border-border pt-5')) {
+  fail('Contact cards must keep each person’s email and phone clearly separated');
+}
+
+const campsPage = readFileSync(join(SRC, 'pages/Camps.jsx'), 'utf8');
+const coachesPage = readFileSync(join(SRC, 'pages/Coaches.jsx'), 'utf8');
+const primaryNav = constants.match(/export const NAV_LINKS = \[([\s\S]*?)\];/)?.[1] ?? '';
+if (!primaryNav.includes("{ label: 'Coaches', to: '/coaches' }")) fail('Primary navigation must include Coaches');
+if (primaryNav.includes("{ label: 'Camps', to: '/camps' }")) fail('Primary navigation must not include Camps');
+if (!campsPage.includes('Inquire About Camp Start Dates')) fail('Camps CTA must use approved inquiry copy');
+for (const phrase of ['Training', 'Lessons', 'Camps', 'Learn and Develop']) {
+  if (!coachesPage.includes(phrase)) fail(`Coaches must communicate ${phrase}`);
+}
 
 const app = readFileSync(join(SRC, 'App.jsx'), 'utf8');
 if (!app.includes('EventsRedirect') || !app.includes('path="/events"')) {
   fail('App.jsx must redirect /events via EventsRedirect');
+}
+
+const seo = readFileSync(join(SRC, 'components/Seo.jsx'), 'utf8');
+for (const route of ['/', '/facility', '/day-passes', '/reservations', '/coaches', '/contact-us', '/camps', '/gallery', '/our-story', '/partners', '/policies', '/vip']) {
+  if (!seo.includes(`'${route}'`)) fail(`SEO metadata must cover route: ${route}`);
 }
 
 const indexHtml = readFileSync(join(ROOT, 'index.html'), 'utf8');
@@ -106,6 +135,15 @@ try {
   fail('Trosky logo asset must be present in public/trosky-sports-club-logo.png');
 }
 
+const navbar = readFileSync(join(SRC, 'components/Navbar.jsx'), 'utf8');
+const footer = readFileSync(join(SRC, 'components/Footer.jsx'), 'utf8');
+for (const [name, source] of [['Navbar', navbar], ['Footer', footer]]) {
+  if (!source.includes('bg-[#080b10]')) fail(`${name} must use the Base44 dark shell`);
+}
+if (!footer.includes('EVENTS_VENUE_URL') || !footer.includes('rel="noreferrer"')) {
+  fail('Footer Events link must remain safely external');
+}
+
 for (const file of [join(SRC, 'components/Navbar.jsx'), join(SRC, 'components/Footer.jsx')]) {
   if (!readFileSync(file, 'utf8').includes('trosky-sports-club-logo.png')) {
     fail(`${relative(ROOT, file)} must display the approved Trosky crest`);
@@ -113,28 +151,67 @@ for (const file of [join(SRC, 'components/Navbar.jsx'), join(SRC, 'components/Fo
 }
 
 const home = readFileSync(join(SRC, 'pages/Home.jsx'), 'utf8');
-const heroVideoPath = join(ROOT, 'public', 'trosky-event-hero.mp4');
+const heroVideoPath = join(ROOT, 'public', 'trosky-sports-club-hero.mp4');
 try {
   statSync(heroVideoPath);
 } catch {
-  fail('Mobile-optimized Trosky hero video must be present in public/trosky-event-hero.mp4');
+  fail('Original Sports Club hero video must be present in public/trosky-sports-club-hero.mp4');
 }
-for (const snippet of ['<video', 'autoPlay', 'muted', 'loop', 'playsInline', '/trosky-event-hero.mp4']) {
-  if (!home.includes(snippet)) fail(`Home hero must include video background behavior: ${snippet}`);
+for (const snippet of ['<video', 'autoPlay', 'muted', 'loop', 'playsInline', '/trosky-sports-club-hero.mp4']) {
+  if (!home.includes(snippet)) fail(`Home hero must include original video behavior: ${snippet}`);
 }
-if (!home.includes('Bring the Crew') || !home.includes('Buy one Day Pass. Bring up to 3 friends on us.')) {
-  fail('Home must use the refined First Visit offer treatment');
+if (home.includes('Bring the Crew')) fail('Legacy home copy must not return: Bring the Crew');
+
+const base44HomeTitles = [
+  'First Visit Offer',
+  'Founding Offer — $79/month',
+  'Facility At A Glance',
+  'Explore the Facility',
+  'One Facility. Endless Ways to Use It.',
+  'Day Passes / Memberships',
+  'VIP Memberships',
+  'Upcoming Events at Trosky',
+  'Training, Lessons & Camps',
+  "Austin's Community Sports & Event Destination.",
+  'Amenities Built Around the Experience',
+  'Sponsors, Partners & Vendors',
+  'Come See It for Yourself',
+];
+let homeTitlePosition = -1;
+for (const title of base44HomeTitles) {
+  const next = home.indexOf(title);
+  if (next <= homeTitlePosition) fail(`Home must include Base44 section in order: ${title}`);
+  homeTitlePosition = next;
 }
-if (home.includes('First Visit Offer:</span>')) {
-  fail('Home must not use the old full-width First Visit offer strip');
+
+for (const phrase of [
+  'No Hidden Costs',
+  'Simple, Transparent Pricing',
+  'Standard Bookings',
+  'Private Events & Large Rentals',
+  'Ready to Experience Trosky',
+  'Meet the Coaches',
+]) {
+  if (home.includes(phrase)) fail(`Home must not include removed copy: ${phrase}`);
 }
-if (!home.includes('FLUID_ADVANTAGE') || !home.includes('href={FLUID_ADVANTAGE}')) {
-  fail('Home Founding Offer must deep-link to the Advantage plan in Fluid');
+
+if (!home.includes('Event Hosting') || !home.includes('EVENTS_VENUE_URL') || !home.includes('object-cover')) {
+  fail('Home must include an image-led Event Hosting card linked to the Events website');
+}
+if (!home.includes('className="flex flex-col overflow-hidden rounded-lg border border-border bg-white transition hover:-translate-y-1 hover:shadow-lg"')) {
+  fail('Home experience cards must stack their image and content vertically without clipping');
 }
 
 const vipPage = readFileSync(join(SRC, 'pages/VIP.jsx'), 'utf8');
 for (const plan of ['FLUID_VIP', 'FLUID_VIP_FAMILY']) {
   if (!vipPage.includes(plan)) fail(`VIP page must deep-link to ${plan}`);
+}
+
+for (const page of ['Facility.jsx', 'DayPasses.jsx', 'VIP.jsx', 'Coaches.jsx', 'Camps.jsx', 'OurStory.jsx', 'PartnerWithUs.jsx', 'Partners.jsx', 'Gallery.jsx', 'ContactUs.jsx', 'Reservations.jsx', 'Policies.jsx']) {
+  const source = readFileSync(join(SRC, 'pages', page), 'utf8');
+  if (!source.includes('base44-eyebrow') && !source.includes('PageHeader') && !source.includes('ImageHero')) {
+    fail(`${page} must use the Base44 route-page system`);
+  }
 }
 
 if (!failed) {

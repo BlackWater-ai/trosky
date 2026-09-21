@@ -98,7 +98,7 @@ export default function ContactUs() {
     <div className="font-inter bg-background">
       <Navbar />
 
-      <section className="pt-32 pb-16 bg-secondary">
+      <section className="pt-32 pb-16 bg-[#080b10] text-white">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -106,11 +106,11 @@ export default function ContactUs() {
             transition={{ duration: 0.7 }}
             className="text-center"
           >
-            <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-4 font-medium">Contact</p>
-            <h1 className="font-display text-6xl md:text-7xl text-foreground tracking-wider mb-5">
+            <p className="base44-eyebrow mb-4">Contact</p>
+            <h1 className="font-display text-6xl md:text-7xl text-white tracking-wider mb-5">
               Contact Trosky Sports Club
             </h1>
-            <p className="font-inter text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="font-inter text-white/70 text-lg leading-relaxed max-w-2xl mx-auto">
               Have a question about the facility, reservations, day passes, events, camps, or memberships? Reach out
               and our team will point you in the right direction.
             </p>
@@ -122,22 +122,22 @@ export default function ContactUs() {
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <div className="bg-white border border-border rounded-xl p-6 md:p-8 grid sm:grid-cols-2 gap-6 md:gap-8 mb-12">
             {CONTACTS.map((person) => (
-              <div key={person.email} className="space-y-2">
-                <p className="font-inter text-xs tracking-widest uppercase text-muted-foreground font-semibold mb-3">
+              <div key={person.email} className="space-y-3 border-t border-border pt-5 first:border-t-0 first:pt-0">
+                <p className="font-inter text-xs tracking-widest uppercase text-muted-foreground font-semibold">
                   {person.label}
                 </p>
-                  <a
-                    href={`mailto:${person.email}`}
-                    className="flex items-center gap-2 font-inter text-sm text-foreground hover:text-primary transition-colors break-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
-                  >
-                    <Mail className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" /> {person.email}
-                  </a>
-                  <a
-                    href={`tel:${person.tel}`}
-                    className="flex items-center gap-2 font-inter text-sm text-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
-                  >
-                    <Phone className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" /> {person.phone}
-                  </a>
+                <a
+                  href={`mailto:${person.email}`}
+                  className="flex items-start gap-2 font-inter text-sm text-foreground hover:text-primary transition-colors break-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+                >
+                  <Mail className="mt-0.5 w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" /> {person.email}
+                </a>
+                <a
+                  href={`tel:${person.tel}`}
+                  className="flex items-center gap-2 font-inter text-sm text-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-sm"
+                >
+                  <Phone className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" /> {person.phone}
+                </a>
               </div>
             ))}
           </div>
@@ -148,7 +148,7 @@ export default function ContactUs() {
             transition={{ duration: 0.7 }}
             className="mb-12"
           >
-            <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-3 font-medium">Get In Touch</p>
+            <p className="base44-eyebrow mb-3">Get In Touch</p>
             <h2 className="font-display text-4xl md:text-5xl text-foreground tracking-wider">
               General Contact Form
             </h2>
