@@ -122,14 +122,23 @@ try {
 for (const snippet of ['<video', 'autoPlay', 'muted', 'loop', 'playsInline', '/trosky-sports-club-hero.mp4']) {
   if (!home.includes(snippet)) fail(`Home hero must include original video behavior: ${snippet}`);
 }
-if (!home.includes('Bring the Crew') || !home.includes('Buy one Day Pass. Bring up to 3 friends on us.')) {
-  fail('Home must use the refined First Visit offer treatment');
+if (home.includes('Bring the Crew') || home.includes('Founding Offer — $79/month')) {
+  fail('Home must avoid repeated offer and membership-pricing blocks');
 }
-if (home.includes('First Visit Offer:</span>')) {
-  fail('Home must not use the old full-width First Visit offer strip');
+
+for (const phrase of [
+  'No Hidden Costs',
+  'Simple, Transparent Pricing',
+  'Standard Bookings',
+  'Private Events & Large Rentals',
+  'Ready to Experience Trosky',
+  'Meet the Coaches',
+]) {
+  if (home.includes(phrase)) fail(`Home must not include removed copy: ${phrase}`);
 }
-if (!home.includes('FLUID_ADVANTAGE') || !home.includes('href={FLUID_ADVANTAGE}')) {
-  fail('Home Founding Offer must deep-link to the Advantage plan in Fluid');
+
+if (!home.includes('Event Hosting') || !home.includes('EVENTS_VENUE_URL') || !home.includes('object-cover')) {
+  fail('Home must include an image-led Event Hosting card linked to the Events website');
 }
 
 const vipPage = readFileSync(join(SRC, 'pages/VIP.jsx'), 'utf8');
