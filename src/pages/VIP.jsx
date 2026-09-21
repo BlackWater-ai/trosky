@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { ImageHero, FinalCTA } from '../components/PageSections';
-import { FLUID_MEMBERSHIP } from '@/lib/constants';
+import { FLUID_VIP, FLUID_VIP_FAMILY } from '@/lib/constants';
 import { PHOTOS } from '@/lib/photos';
 
 const vip = [
@@ -57,12 +56,12 @@ export default function VIP() {
               ))}
             </ul>
             <a
-              href={FLUID_MEMBERSHIP}
+              href={FLUID_VIP}
               target="_blank"
               rel="noreferrer"
               className="bg-primary text-primary-foreground px-6 py-3 font-inter font-bold text-xs tracking-wider uppercase rounded-sm inline-flex items-center gap-2"
             >
-              Ask About VIP <ArrowRight className="w-4 h-4" />
+              Choose VIP <ArrowRight className="w-4 h-4" />
             </a>
           </div>
           <div className="bg-white border border-primary/30 rounded-xl p-8">
@@ -76,12 +75,14 @@ export default function VIP() {
                 </li>
               ))}
             </ul>
-            <Link
-              to="/contact-us"
+            <a
+              href={FLUID_VIP_FAMILY}
+              target="_blank"
+              rel="noreferrer"
               className="bg-primary text-primary-foreground px-6 py-3 font-inter font-bold text-xs tracking-wider uppercase rounded-sm inline-flex items-center gap-2"
             >
-              Ask About Family VIP <ArrowRight className="w-4 h-4" />
-            </Link>
+              Choose Family VIP <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>

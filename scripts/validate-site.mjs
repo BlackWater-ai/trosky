@@ -128,6 +128,14 @@ if (!home.includes('Bring the Crew') || !home.includes('Buy one Day Pass. Bring 
 if (home.includes('First Visit Offer:</span>')) {
   fail('Home must not use the old full-width First Visit offer strip');
 }
+if (!home.includes('FLUID_ADVANTAGE') || !home.includes('href={FLUID_ADVANTAGE}')) {
+  fail('Home Founding Offer must deep-link to the Advantage plan in Fluid');
+}
+
+const vipPage = readFileSync(join(SRC, 'pages/VIP.jsx'), 'utf8');
+for (const plan of ['FLUID_VIP', 'FLUID_VIP_FAMILY']) {
+  if (!vipPage.includes(plan)) fail(`VIP page must deep-link to ${plan}`);
+}
 
 if (!failed) {
   console.log('validate-site: all checks passed');

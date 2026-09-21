@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { EVENTS_VENUE_URL, FLUID_BOOKING, FLUID_MEMBERSHIP, STORY_VIDEO } from '@/lib/constants';
+import { EVENTS_VENUE_URL, FLUID_ADVANTAGE, FLUID_BOOKING, STORY_VIDEO } from '@/lib/constants';
 import { PHOTOS } from '@/lib/photos';
 
 const glance = [
@@ -154,7 +154,7 @@ export default function Home() {
               </p>
             </div>
             <a
-              href={FLUID_MEMBERSHIP}
+              href={FLUID_ADVANTAGE}
               target="_blank"
               rel="noreferrer"
               className="bg-primary text-primary-foreground px-8 py-4 font-inter font-bold text-sm tracking-wider uppercase rounded-sm hover:opacity-90 inline-flex items-center justify-center gap-2 whitespace-nowrap"
