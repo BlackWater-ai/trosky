@@ -112,6 +112,14 @@ for (const file of [join(SRC, 'components/Navbar.jsx'), join(SRC, 'components/Fo
   }
 }
 
+const home = readFileSync(join(SRC, 'pages/Home.jsx'), 'utf8');
+if (!home.includes('Bring the Crew') || !home.includes('Buy one Day Pass. Bring up to 3 friends on us.')) {
+  fail('Home must use the refined First Visit offer treatment');
+}
+if (home.includes('First Visit Offer:</span>')) {
+  fail('Home must not use the old full-width First Visit offer strip');
+}
+
 if (!failed) {
   console.log('validate-site: all checks passed');
   process.exit(0);

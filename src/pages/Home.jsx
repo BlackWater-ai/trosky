@@ -112,15 +112,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-8 bg-primary text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <p className="font-inter text-sm md:text-base">
-            <span className="font-bold tracking-wide uppercase mr-2">First Visit Offer:</span>
-            Buy 1 Day Pass — Bring 3 Friends FREE
-          </p>
-          <Link to="/day-passes" className="font-inter font-bold text-xs tracking-wider uppercase underline underline-offset-4">
-            View Day Passes
-          </Link>
+      <section className="relative z-20 -mt-8 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto rounded-xl border border-accent/50 bg-[#101215] px-6 py-6 sm:px-8 sm:py-7 shadow-2xl shadow-black/20">
+          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-start gap-4">
+              <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-accent ring-4 ring-accent/15" aria-hidden="true" />
+              <div>
+                <p className="font-inter text-[11px] font-bold tracking-[0.24em] uppercase text-accent mb-1.5">First Visit</p>
+                <h2 className="font-display text-3xl sm:text-4xl tracking-wide text-white leading-none">Bring the Crew</h2>
+                <p className="mt-2 font-inter text-sm sm:text-base leading-relaxed text-white/70">Buy one Day Pass. Bring up to 3 friends on us.</p>
+              </div>
+            </div>
+            <Link
+              to="/day-passes"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3.5 font-inter text-xs font-bold tracking-wider uppercase text-primary-foreground transition-colors hover:bg-[#ff6d27] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#101215]"
+            >
+              See Day Passes <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
