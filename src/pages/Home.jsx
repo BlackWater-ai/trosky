@@ -169,11 +169,11 @@ export default function Home() {
               );
 
               return use.href ? (
-                <a key={use.title} href={use.href} target="_blank" rel="noreferrer" className="flex overflow-hidden rounded-lg border border-border bg-white transition hover:-translate-y-1 hover:shadow-lg">
+                <a key={use.title} href={use.href} target="_blank" rel="noreferrer" className="flex flex-col overflow-hidden rounded-lg border border-border bg-white transition hover:-translate-y-1 hover:shadow-lg">
                   {content}
                 </a>
               ) : (
-                <Link key={use.title} to={use.to} className="flex overflow-hidden rounded-lg border border-border bg-white transition hover:-translate-y-1 hover:shadow-lg">
+                <Link key={use.title} to={use.to} className="flex flex-col overflow-hidden rounded-lg border border-border bg-white transition hover:-translate-y-1 hover:shadow-lg">
                   {content}
                 </Link>
               );
@@ -207,4 +207,3 @@ export default function Home() {
     </div>
   );
 }
-

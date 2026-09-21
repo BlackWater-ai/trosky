@@ -164,6 +164,9 @@ for (const phrase of [
 if (!home.includes('Event Hosting') || !home.includes('EVENTS_VENUE_URL') || !home.includes('object-cover')) {
   fail('Home must include an image-led Event Hosting card linked to the Events website');
 }
+if (!home.includes('className="flex flex-col overflow-hidden rounded-lg border border-border bg-white transition hover:-translate-y-1 hover:shadow-lg"')) {
+  fail('Home experience cards must stack their image and content vertically without clipping');
+}
 
 const vipPage = readFileSync(join(SRC, 'pages/VIP.jsx'), 'utf8');
 for (const plan of ['FLUID_VIP', 'FLUID_VIP_FAMILY']) {
