@@ -33,6 +33,11 @@ function fail(msg) {
   console.error(`FAIL: ${msg}`);
 }
 
+const styles = readFileSync(join(SRC, 'index.css'), 'utf8');
+for (const token of ['--base44-ink', '--base44-orange', '.base44-eyebrow', '.base44-panel']) {
+  if (!styles.includes(token)) fail(`Base44 visual token missing: ${token}`);
+}
+
 const internalEvents = /(to|href)\s*=\s*['"`]\/events(?:-venue)?['"`]|to:\s*['"`]\/events(?:-venue)?['"`]/g;
 
 for (const file of files) {
