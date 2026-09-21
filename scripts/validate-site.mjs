@@ -135,6 +135,15 @@ try {
   fail('Trosky logo asset must be present in public/trosky-sports-club-logo.png');
 }
 
+const navbar = readFileSync(join(SRC, 'components/Navbar.jsx'), 'utf8');
+const footer = readFileSync(join(SRC, 'components/Footer.jsx'), 'utf8');
+for (const [name, source] of [['Navbar', navbar], ['Footer', footer]]) {
+  if (!source.includes('bg-[#080b10]')) fail(`${name} must use the Base44 dark shell`);
+}
+if (!footer.includes('EVENTS_VENUE_URL') || !footer.includes('rel="noreferrer"')) {
+  fail('Footer Events link must remain safely external');
+}
+
 for (const file of [join(SRC, 'components/Navbar.jsx'), join(SRC, 'components/Footer.jsx')]) {
   if (!readFileSync(file, 'utf8').includes('trosky-sports-club-logo.png')) {
     fail(`${relative(ROOT, file)} must display the approved Trosky crest`);
