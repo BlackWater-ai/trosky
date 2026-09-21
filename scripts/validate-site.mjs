@@ -85,6 +85,16 @@ if (contactPage.includes('For event rentals and camps')) {
   fail('Helper copy under General Contact Form must stay removed');
 }
 
+const campsPage = readFileSync(join(SRC, 'pages/Camps.jsx'), 'utf8');
+const coachesPage = readFileSync(join(SRC, 'pages/Coaches.jsx'), 'utf8');
+const primaryNav = constants.match(/export const NAV_LINKS = \[([\s\S]*?)\];/)?.[1] ?? '';
+if (!primaryNav.includes("{ label: 'Coaches', to: '/coaches' }")) fail('Primary navigation must include Coaches');
+if (primaryNav.includes("{ label: 'Camps', to: '/camps' }")) fail('Primary navigation must not include Camps');
+if (!campsPage.includes('Inquire About Camp Start Dates')) fail('Camps CTA must use approved inquiry copy');
+for (const phrase of ['Training', 'Lessons', 'Camps', 'Learn and Develop']) {
+  if (!coachesPage.includes(phrase)) fail(`Coaches must communicate ${phrase}`);
+}
+
 const app = readFileSync(join(SRC, 'App.jsx'), 'utf8');
 if (!app.includes('EventsRedirect') || !app.includes('path="/events"')) {
   fail('App.jsx must redirect /events via EventsRedirect');
