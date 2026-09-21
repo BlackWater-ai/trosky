@@ -80,7 +80,7 @@ export default function Home() {
             poster={PHOTOS.courts}
             aria-label="Trosky Sports Club in action"
           >
-            <source src="/trosky-event-hero.mp4" type="video/mp4" />
+            <source src="/trosky-sports-club-hero.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/80 to-foreground/30" />
         </div>

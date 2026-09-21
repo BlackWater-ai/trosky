@@ -113,14 +113,14 @@ for (const file of [join(SRC, 'components/Navbar.jsx'), join(SRC, 'components/Fo
 }
 
 const home = readFileSync(join(SRC, 'pages/Home.jsx'), 'utf8');
-const heroVideoPath = join(ROOT, 'public', 'trosky-event-hero.mp4');
+const heroVideoPath = join(ROOT, 'public', 'trosky-sports-club-hero.mp4');
 try {
   statSync(heroVideoPath);
 } catch {
-  fail('Mobile-optimized Trosky hero video must be present in public/trosky-event-hero.mp4');
+  fail('Original Sports Club hero video must be present in public/trosky-sports-club-hero.mp4');
 }
-for (const snippet of ['<video', 'autoPlay', 'muted', 'loop', 'playsInline', '/trosky-event-hero.mp4']) {
-  if (!home.includes(snippet)) fail(`Home hero must include video background behavior: ${snippet}`);
+for (const snippet of ['<video', 'autoPlay', 'muted', 'loop', 'playsInline', '/trosky-sports-club-hero.mp4']) {
+  if (!home.includes(snippet)) fail(`Home hero must include original video behavior: ${snippet}`);
 }
 if (!home.includes('Bring the Crew') || !home.includes('Buy one Day Pass. Bring up to 3 friends on us.')) {
   fail('Home must use the refined First Visit offer treatment');
