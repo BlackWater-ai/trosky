@@ -109,6 +109,11 @@ if (!app.includes('EventsRedirect') || !app.includes('path="/events"')) {
   fail('App.jsx must redirect /events via EventsRedirect');
 }
 
+const seo = readFileSync(join(SRC, 'components/Seo.jsx'), 'utf8');
+for (const route of ['/', '/facility', '/day-passes', '/reservations', '/coaches', '/contact-us', '/camps', '/gallery', '/our-story', '/partners', '/policies', '/vip']) {
+  if (!seo.includes(`'${route}'`)) fail(`SEO metadata must cover route: ${route}`);
+}
+
 const indexHtml = readFileSync(join(ROOT, 'index.html'), 'utf8');
 for (const needle of ['rel="canonical"', 'og:title', 'og:description', 'og:image', 'twitter:card', 'SportsActivityLocation', 'LocalBusiness']) {
   if (!indexHtml.includes(needle)) fail(`index.html missing SEO: ${needle}`);
