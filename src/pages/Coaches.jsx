@@ -64,7 +64,7 @@ export default function Coaches() {
             transition={{ duration: 0.7 }}
             className="max-w-3xl"
           >
-            <p className="font-inter text-sm tracking-[0.3em] text-white/50 uppercase mb-4 font-medium">
+            <p className="base44-eyebrow mb-4">
               Learn and Develop
             </p>
             <h1 className="font-display text-6xl md:text-8xl text-white tracking-wider leading-none mb-6">
@@ -96,7 +96,7 @@ export default function Coaches() {
             transition={{ duration: 0.7 }}
             className="text-center mb-14"
           >
-            <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-3 font-medium">
+            <p className="base44-eyebrow mb-3">
               Learn and Develop
             </p>
             <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider">Ways to Grow at Trosky</h2>

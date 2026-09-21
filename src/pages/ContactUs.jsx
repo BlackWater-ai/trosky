@@ -98,7 +98,7 @@ export default function ContactUs() {
     <div className="font-inter bg-background">
       <Navbar />
 
-      <section className="pt-32 pb-16 bg-secondary">
+      <section className="pt-32 pb-16 bg-[#080b10] text-white">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -106,11 +106,11 @@ export default function ContactUs() {
             transition={{ duration: 0.7 }}
             className="text-center"
           >
-            <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-4 font-medium">Contact</p>
-            <h1 className="font-display text-6xl md:text-7xl text-foreground tracking-wider mb-5">
+            <p className="base44-eyebrow mb-4">Contact</p>
+            <h1 className="font-display text-6xl md:text-7xl text-white tracking-wider mb-5">
               Contact Trosky Sports Club
             </h1>
-            <p className="font-inter text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="font-inter text-white/70 text-lg leading-relaxed max-w-2xl mx-auto">
               Have a question about the facility, reservations, day passes, events, camps, or memberships? Reach out
               and our team will point you in the right direction.
             </p>
@@ -148,7 +148,7 @@ export default function ContactUs() {
             transition={{ duration: 0.7 }}
             className="mb-12"
           >
-            <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-3 font-medium">Get In Touch</p>
+            <p className="base44-eyebrow mb-3">Get In Touch</p>
             <h2 className="font-display text-4xl md:text-5xl text-foreground tracking-wider">
               General Contact Form
             </h2>

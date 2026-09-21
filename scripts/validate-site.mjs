@@ -207,6 +207,13 @@ for (const plan of ['FLUID_VIP', 'FLUID_VIP_FAMILY']) {
   if (!vipPage.includes(plan)) fail(`VIP page must deep-link to ${plan}`);
 }
 
+for (const page of ['Facility.jsx', 'DayPasses.jsx', 'VIP.jsx', 'Coaches.jsx', 'Camps.jsx', 'OurStory.jsx', 'PartnerWithUs.jsx', 'Partners.jsx', 'Gallery.jsx', 'ContactUs.jsx', 'Reservations.jsx', 'Policies.jsx']) {
+  const source = readFileSync(join(SRC, 'pages', page), 'utf8');
+  if (!source.includes('base44-eyebrow') && !source.includes('PageHeader') && !source.includes('ImageHero')) {
+    fail(`${page} must use the Base44 route-page system`);
+  }
+}
+
 if (!failed) {
   console.log('validate-site: all checks passed');
   process.exit(0);
