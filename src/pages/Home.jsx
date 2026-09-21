@@ -1,209 +1,89 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, Dumbbell, Snowflake, Trophy, Users } from 'lucide-react';
+import { ArrowRight, Calendar, Check, Dumbbell, Snowflake, Trophy, Users } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { EVENTS_VENUE_URL, FLUID_BOOKING } from '@/lib/constants';
+import { EVENTS_VENUE_URL, FLUID_ADVANTAGE, FLUID_BOOKING, FLUID_GROUP_DAY_PASS, FLUID_INDIVIDUAL_DAY_PASS, FLUID_VIP, FLUID_VIP_FAMILY } from '@/lib/constants';
 import { PHOTOS } from '@/lib/photos';
 
 const glance = [
-  { icon: Trophy, title: '2.5 Acre Facility', desc: 'An outdoor sports and gathering place designed for play, training, and the Austin community.' },
-  { icon: Calendar, title: '8 Pickleball / Padel Courts', desc: 'Courts for open play, reservations, lessons, clinics, and friendly competition.' },
-  { icon: Users, title: 'Multi-Sport Turf Field', desc: 'A flexible field for soccer, volleyball, camps, social play, and community time.' },
-  { icon: Snowflake, title: 'Recovery & VIP Spaces', desc: 'Cold plunge, lounge, food, and hangout areas built into the club experience.' },
+  { icon: Trophy, title: '2.5 Acre Facility', desc: 'Outdoor sports, recovery, food, and gathering space in one Austin destination.' },
+  { icon: Calendar, title: '8 Pickleball / Padel Courts', desc: 'Open play, reservations, lessons, clinics, and friendly competition.' },
+  { icon: Users, title: 'Multi-Sport Turf', desc: 'Flexible room for soccer, volleyball, camps, social play, and teams.' },
+  { icon: Dumbbell, title: 'Events & Venue Space', desc: 'A memorable setting for celebrations, company events, and community nights.' },
+  { icon: Snowflake, title: 'Recovery & VIP', desc: 'Cold plunges, lounge space, shade, and the time to slow down together.' },
+  { icon: Users, title: 'Family & Community', desc: 'A welcoming club built for every age, ability, and reason to gather.' },
 ];
 
-const spaces = [
+const gallery = [
   { title: 'The Facility', image: PHOTOS.turf, to: '/facility' },
-  { title: 'Pickleball & Padel', image: PHOTOS.courts, to: '/facility' },
+  { title: 'Pickleball Courts', image: PHOTOS.pickleball, to: '/facility' },
+  { title: 'Padel Courts', image: PHOTOS.courts, to: '/facility' },
+  { title: 'Volleyball & Badminton', image: PHOTOS.courtsHill, to: '/facility' },
   { title: 'VIP Container Rooms', image: PHOTOS.vipLounge, to: '/vip' },
+  { title: 'Outdoor Calisthenics Gym', image: PHOTOS.grounds, to: '/facility' },
+  { title: 'Cold Plunges', image: PHOTOS.coldPlunge, to: '/vip' },
+  { title: 'BBQ & Hangout Areas', image: PHOTOS.hangout, to: '/facility' },
+  { title: 'Food Truck Area', image: PHOTOS.snackBar, to: '/facility' },
+  { title: 'Pro Shop & Lounge', image: PHOTOS.snackBar, to: '/facility' },
+  { title: 'Event Space', image: PHOTOS.deck, href: EVENTS_VENUE_URL },
+  { title: 'Movie Nights & Big Screen', image: PHOTOS.clubhouse, href: EVENTS_VENUE_URL },
 ];
 
-const uses = [
-  {
-    title: 'Play',
-    description: 'Day passes, casual play, court time, turf, and family-friendly space.',
-    image: PHOTOS.pickleball,
-    to: '/day-passes',
-    label: 'Explore Day Passes',
-  },
-  {
-    title: 'Event Hosting',
-    description: 'Private celebrations, corporate gatherings, watch parties, and venue rentals.',
-    image: PHOTOS.deck,
-    href: EVENTS_VENUE_URL,
-    label: 'Explore Event Hosting',
-  },
-  {
-    title: 'Learn & Develop',
-    description: 'Training, lessons, camps, clinics, and multi-sport development.',
-    image: PHOTOS.courtsHill,
-    to: '/coaches',
-    label: 'Explore Coaches',
-  },
+const waysToUse = [
+  { title: 'Play', image: PHOTOS.pickleball, items: ['Court reservations and open play', 'Day passes and memberships', 'Turf, teams, and family time'], to: '/day-passes', label: 'EXPLORE DAY PASSES' },
+  { title: 'Event Hosting', image: PHOTOS.deck, items: ['Birthdays and celebrations', 'Company events and team building', 'Watch parties and private rentals'], href: EVENTS_VENUE_URL, label: 'EXPLORE EVENT HOSTING' },
+  { title: 'Recover & Relax', image: PHOTOS.coldPlunge, items: ['Cold plunges and outdoor fitness', 'VIP rooms and shaded lounge space', 'Food, drinks, and an easy place to stay awhile'], to: '/vip', label: 'SEE AMENITIES' },
 ];
+
+const passes = [
+  { title: 'Individual Day Pass', price: '$25', description: 'A full day of courts, turf, community space, and the Trosky atmosphere.', href: FLUID_INDIVIDUAL_DAY_PASS },
+  { title: 'Group Day Pass', price: '$50', description: 'Bring the crew for a shared day out at the club.', href: FLUID_GROUP_DAY_PASS },
+];
+const vipPlans = [
+  { title: 'VIP Individual', price: '$149 / month', href: FLUID_VIP, items: ['Priority access and booking', 'VIP room and recovery access', 'Club perks and member events'] },
+  { title: 'VIP Family', price: '$229 / month', href: FLUID_VIP_FAMILY, items: ['Bring the household into the club', 'Priority access and booking', 'Family-friendly events and VIP perks'] },
+];
+const events = [['Open Play', 'Weeknights & weekends'], ['Community Watch Nights', 'Big games, good food, and neighbors'], ['Social Tournaments', 'Friendly competition for every level'], ['Family Days', 'A full day made for the whole crew'], ['Private Celebrations', 'Your milestone, hosted at Trosky'], ['Team Building', 'Get your group out of the office']];
+const programs = [['Soccer Development', 'Skills, movement, and confidence for growing players.'], ['Pickleball Lessons', 'Learn the game or sharpen your next-level play.'], ['Padel Lessons', 'Fast, social, and coached for your pace.'], ['Multi-Sport Camps', 'Active school-break days built around trying more.'], ['Performance Training', 'Purposeful work for athletes and teams.'], ['Team Training', 'Bring your group to train, compete, and connect.']];
+const amenities = ['Premium Courts', 'Turf & Training Space', 'Cold Plunge Recovery', 'Outdoor Fitness', 'Food & Drink', 'VIP Lounge Areas', 'Private Event Spaces', 'Easy Austin Access'];
+const partners = ['Brands that elevate play', 'Local teams and coaches', 'Food, wellness, and event vendors'];
+
+function ExternalButton({ href, children, dark = false }) {
+  return <a href={href} target="_blank" rel="noreferrer" className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-sm px-6 py-3 text-xs font-bold uppercase tracking-wider transition ${dark ? 'border border-white/50 text-white hover:bg-white/10' : 'bg-primary text-primary-foreground hover:bg-[#ff6d27]'}`}>{children}<ArrowRight className="h-4 w-4" aria-hidden="true" /></a>;
+}
+
+function CheckList({ items, muted = false }) {
+  return <ul className={`space-y-3 text-sm leading-relaxed ${muted ? 'text-white/70' : 'text-muted-foreground'}`}>{items.map((item) => <li key={item} className="flex gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{item}</li>)}</ul>;
+}
 
 export default function Home() {
-  return (
-    <div className="font-inter bg-background">
-      <Navbar />
+  return <div className="font-inter bg-[#f6f3ee] text-foreground"><Navbar />
+    <section className="relative flex min-h-[min(810px,100vh)] items-end overflow-hidden bg-[#080b10]"><div className="absolute inset-0"><video className="h-full w-full object-cover opacity-55" autoPlay muted loop playsInline poster={PHOTOS.courts} aria-label="Trosky Sports Club in action"><source src="/trosky-sports-club-hero.mp4" type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-r from-[#080b10] via-[#080b10]/80 to-[#080b10]/20" /><div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#080b10] to-transparent" /></div><div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-36 lg:px-8 lg:pb-20"><motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-3xl"><p className="mb-6 inline-flex rounded-full border border-white/25 bg-black/20 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.17em] text-white sm:text-xs"><span className="mr-2 text-primary">First Visit Offer</span> Buy 1 Day Pass — Bring 3 Friends FREE</p><p className="base44-eyebrow mb-4">Austin&apos;s Community Sports &amp; Event Destination</p><h1 className="font-display mb-6 text-6xl leading-[0.88] tracking-wide text-white sm:text-7xl md:text-9xl">More Than a<br />Sports Facility</h1><p className="mb-9 max-w-xl text-lg leading-relaxed text-white/80 sm:text-xl">A place to play, gather, train, and grow—built for families, athletes, teams, and the Austin community.</p><div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap"><ExternalButton href={FLUID_INDIVIDUAL_DAY_PASS}>BUY A DAY PASS</ExternalButton><ExternalButton href={FLUID_BOOKING} dark>BOOK A COURT</ExternalButton><Link to="/facility" className="inline-flex min-h-12 items-center justify-center rounded-sm border border-white/50 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-white/10">EXPLORE THE FACILITY</Link></div></motion.div></div></section>
 
-      <section className="relative flex min-h-[min(780px,92vh)] items-end overflow-hidden bg-foreground">
-        <div className="absolute inset-0">
-          <video
-            className="h-full w-full object-cover opacity-60"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={PHOTOS.courts}
-            aria-label="Trosky Sports Club in action"
-          >
-            <source src="/trosky-sports-club-hero.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#10233e]/95 via-[#10233e]/68 to-[#10233e]/18" />
-          <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#10233e]/65 to-transparent" />
-        </div>
+    <section className="bg-primary py-8 text-primary-foreground"><div className="mx-auto grid max-w-7xl gap-5 px-6 sm:grid-cols-[1fr_auto] sm:items-center lg:px-8"><div><p className="text-xs font-bold uppercase tracking-[0.25em]">Founding Offer — $79/month</p><h2 className="font-display mt-1 text-3xl tracking-wide">FOUNDING MEMBERS ONLY <span className="text-primary-foreground/70">· ONLY 99 SPOTS</span></h2></div><ExternalButton href={FLUID_ADVANTAGE} dark>JOIN THE FLUID ADVANTAGE</ExternalButton></div></section>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-36 lg:px-8 lg:pb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-2xl"
-          >
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/70">
-              Austin&apos;s community sports club
-            </p>
-            <h1 className="font-display mb-6 text-6xl leading-[0.9] tracking-wide text-white sm:text-7xl md:text-8xl">
-              More Than a
-              <br />
-              Sports Facility
-            </h1>
-            <p className="mb-9 max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl">
-              A place to play, gather, train, and grow—built for families, athletes, teams, and the Austin community.
-            </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a
-                href={FLUID_BOOKING}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-white px-6 py-3 text-xs font-bold uppercase tracking-wider text-foreground transition hover:bg-white/90"
-              >
-                Book a Court <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-              <Link
-                to="/day-passes"
-                className="inline-flex min-h-12 items-center justify-center rounded-sm border border-white/60 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-white/10"
-              >
-                Day Passes
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+    <section className="bg-[#080b10] py-20 text-white sm:py-24"><div className="mx-auto max-w-7xl px-6 lg:px-8"><p className="base44-eyebrow mb-3">Trosky at a glance</p><h2 className="font-display max-w-3xl text-5xl leading-none tracking-wide sm:text-7xl">Facility At A Glance</h2><div className="mt-12 grid overflow-hidden border border-white/15 sm:grid-cols-2 lg:grid-cols-3">{glance.map((item) => <div key={item.title} className="border-b border-r border-white/15 p-7 last:border-b-0 sm:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0"><item.icon className="mb-5 h-5 w-5 text-primary" /><h3 className="font-display text-3xl tracking-wide">{item.title}</h3><p className="mt-3 text-sm leading-relaxed text-white/65">{item.desc}</p></div>)}</div></div></section>
 
-      <section className="border-b border-border bg-white py-14 sm:py-16">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-end lg:px-8">
-          <div>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-primary">The Grounds</p>
-            <h2 className="font-display text-5xl leading-none tracking-wide text-foreground sm:text-6xl">A Home Base for Play</h2>
-          </div>
-          <p className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Trosky brings courts, turf, recovery, food, and room to gather together in one welcoming outdoor setting.
-          </p>
-        </div>
-        <div className="mx-auto mt-10 grid max-w-7xl gap-px overflow-hidden border-y border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {glance.map((item) => (
-            <div key={item.title} className="bg-white px-6 py-7">
-              <item.icon className="mb-5 h-5 w-5 text-primary" aria-hidden="true" />
-              <h3 className="mb-2 font-display text-2xl tracking-wide text-foreground">{item.title}</h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+    <section className="bg-[#f6f3ee] py-20 sm:py-24"><div className="mx-auto max-w-7xl px-6 lg:px-8"><div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"><div><p className="base44-eyebrow mb-3">Every corner has a purpose</p><h2 className="font-display text-5xl leading-none tracking-wide sm:text-7xl">Explore the Facility</h2></div><Link to="/contact-us" className="text-xs font-bold uppercase tracking-wider text-primary hover:text-foreground">Schedule a tour →</Link></div><div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{gallery.map((space) => { const card = <><img src={space.image} alt={space.title} className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-[#080b10]/90 via-[#080b10]/5 to-transparent" /><p className="absolute bottom-5 left-5 right-5 font-display text-2xl tracking-wide text-white">{space.title}</p></>; return space.href ? <a key={space.title} href={space.href} target="_blank" rel="noreferrer" className="group relative min-h-60 overflow-hidden bg-[#080b10]">{card}</a> : <Link key={space.title} to={space.to} className="group relative min-h-60 overflow-hidden bg-[#080b10]">{card}</Link>; })}</div></div></section>
 
-      <section className="bg-secondary py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-primary">Explore</p>
-              <h2 className="font-display text-5xl leading-none tracking-wide text-foreground sm:text-6xl">The Facility</h2>
-            </div>
-            <Link to="/facility" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-foreground hover:text-primary">
-              See all amenities <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="grid gap-5 md:grid-cols-3">
-            {spaces.map((space) => (
-              <Link key={space.title} to={space.to} className="group relative min-h-72 overflow-hidden rounded-lg bg-foreground">
-                <img src={space.image} alt={space.title} className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#10233e]/90 via-[#10233e]/10 to-transparent" />
-                <p className="absolute bottom-6 left-6 font-display text-3xl tracking-wide text-white">{space.title}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+    <section className="bg-white py-20 sm:py-24"><div className="mx-auto max-w-7xl px-6 lg:px-8"><p className="base44-eyebrow mb-3">Built around your day</p><h2 className="font-display max-w-3xl text-5xl leading-none tracking-wide sm:text-7xl">One Facility. Endless Ways to Use It.</h2><div className="mt-12 grid gap-5 lg:grid-cols-3">{waysToUse.map((use) => { const content = <><img src={use.image} alt={use.title} className="h-64 w-full object-cover" /><div className="flex flex-1 flex-col p-7"><h3 className="font-display text-4xl tracking-wide text-foreground">{use.title}</h3><div className="mt-5 flex-1"><CheckList items={use.items} /></div><span className="mt-7 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary">{use.label}<ArrowRight className="h-4 w-4" /></span></div></>; return use.href ? <a key={use.title} href={use.href} target="_blank" rel="noreferrer" className="flex flex-col overflow-hidden rounded-lg border border-border bg-white transition hover:-translate-y-1 hover:shadow-lg">{content}</a> : <Link key={use.title} to={use.to} className="flex flex-col overflow-hidden rounded-lg border border-border bg-white transition hover:-translate-y-1 hover:shadow-lg">{content}</Link>; })}</div></div></section>
 
-      <section className="bg-white py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mb-10 max-w-2xl">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-primary">The Experience</p>
-            <h2 className="font-display text-5xl leading-none tracking-wide text-foreground sm:text-6xl">One Facility, Endless Ways to Use It.</h2>
-          </div>
-          <div className="grid gap-5 md:grid-cols-3">
-            {uses.map((use) => {
-              const content = (
-                <>
-                  <img src={use.image} alt={use.title} className="h-56 w-full object-cover" />
-                  <div className="flex flex-1 flex-col p-6">
-                    <h3 className="font-display text-3xl tracking-wide text-foreground">{use.title}</h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{use.description}</p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary">
-                      {use.label} <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </span>
-                  </div>
-                </>
-              );
+    <section className="bg-[#0d203c] py-20 text-white sm:py-24"><div className="mx-auto max-w-7xl px-6 lg:px-8"><p className="base44-eyebrow mb-3">Choose your way in</p><h2 className="font-display text-5xl leading-none tracking-wide sm:text-7xl">Day Passes / Memberships</h2><div className="mt-12 grid gap-5 lg:grid-cols-3"><div className="base44-panel p-7"><h3 className="font-display text-3xl tracking-wide">What&apos;s Included</h3><div className="mt-5"><CheckList muted items={['Access to courts, turf, and outdoor spaces', 'A social club built for families and athletes', 'Food, lounge, and recovery upgrades available']} /></div></div>{passes.map((pass) => <div key={pass.title} className="rounded-2xl bg-white p-7 text-foreground"><p className="font-display text-3xl tracking-wide">{pass.title}</p><p className="mt-4 font-display text-5xl text-primary">{pass.price}</p><p className="mt-4 text-sm leading-relaxed text-muted-foreground">{pass.description}</p><div className="mt-7"><ExternalButton href={pass.href}>GET YOUR PASS</ExternalButton></div></div>)}</div></div></section>
 
-              return use.href ? (
-                <a key={use.title} href={use.href} target="_blank" rel="noreferrer" className="flex flex-col overflow-hidden rounded-lg border border-border bg-white transition hover:-translate-y-1 hover:shadow-lg">
-                  {content}
-                </a>
-              ) : (
-                <Link key={use.title} to={use.to} className="flex flex-col overflow-hidden rounded-lg border border-border bg-white transition hover:-translate-y-1 hover:shadow-lg">
-                  {content}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+    <section className="bg-[#f6f3ee] py-20 sm:py-24"><div className="mx-auto max-w-7xl px-6 lg:px-8"><p className="base44-eyebrow mb-3">Make Trosky your regular</p><h2 className="font-display text-5xl leading-none tracking-wide sm:text-7xl">VIP Memberships</h2><div className="mt-12 grid gap-5 md:grid-cols-2">{vipPlans.map((plan) => <div key={plan.title} className="overflow-hidden rounded-2xl bg-[#080b10] p-8 text-white"><p className="font-display text-4xl tracking-wide">{plan.title}</p><p className="mt-4 font-display text-5xl text-primary">{plan.price}</p><div className="mt-7"><CheckList muted items={plan.items} /></div><div className="mt-8"><ExternalButton href={plan.href} dark>EXPLORE VIP</ExternalButton></div></div>)}</div></div></section>
 
-      <section className="bg-[#10233e] py-20 sm:py-24">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-8">
-          <div>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#89b4d9]">Come See It</p>
-            <h2 className="font-display text-5xl leading-none tracking-wide text-white sm:text-6xl">Made for Your Whole Crew.</h2>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">
-              Plan a visit, reserve a court, or get in touch to learn what fits your day at Trosky.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to="/contact-us" className="inline-flex min-h-12 items-center justify-center rounded-sm bg-primary px-6 py-3 text-xs font-bold uppercase tracking-wider text-primary-foreground">
-                Schedule a Tour
-              </Link>
-              <a href={FLUID_BOOKING} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center rounded-sm border border-white/45 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white">
-                Book Through Fluid
-              </a>
-            </div>
-          </div>
-          <img src={PHOTOS.clubhouse} alt="Trosky Sports Club clubhouse and deck" className="h-80 w-full rounded-lg object-cover lg:h-[26rem]" />
-        </div>
-      </section>
+    <section className="bg-white py-20 sm:py-24"><div className="mx-auto max-w-7xl px-6 lg:px-8"><p className="base44-eyebrow mb-3">There&apos;s always a reason to show up</p><h2 className="font-display text-5xl leading-none tracking-wide sm:text-7xl">Upcoming Events at Trosky</h2><div className="mt-12 grid gap-px overflow-hidden border border-border bg-border md:grid-cols-2 lg:grid-cols-3">{events.map(([title, detail], i) => <a key={title} href={EVENTS_VENUE_URL} target="_blank" rel="noreferrer" className="bg-white p-7 transition hover:bg-[#f6f3ee]"><p className="text-xs font-bold uppercase tracking-wider text-primary">{String(i + 1).padStart(2, '0')}</p><h3 className="mt-8 font-display text-3xl tracking-wide">{title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{detail}</p><span className="mt-7 inline-block text-xs font-bold uppercase tracking-wider text-primary">Learn more →</span></a>)}</div></div></section>
 
-      <Footer />
-    </div>
-  );
+    <section className="bg-[#080b10] py-20 text-white sm:py-24"><div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8"><div><p className="base44-eyebrow mb-3">Move, learn, improve</p><h2 className="font-display text-5xl leading-none tracking-wide sm:text-7xl">Training, Lessons & Camps</h2><p className="mt-6 max-w-md text-lg leading-relaxed text-white/65">Skill-building programs that help athletes and families find their rhythm at Trosky.</p><Link to="/camps" className="mt-8 inline-flex text-xs font-bold uppercase tracking-wider text-primary">EXPLORE PROGRAMS →</Link></div><div className="grid gap-4 sm:grid-cols-2">{programs.map(([title, detail]) => <div key={title} className="base44-panel p-6"><h3 className="font-display text-2xl tracking-wide">{title}</h3><p className="mt-3 text-sm leading-relaxed text-white/65">{detail}</p></div>)}</div></div></section>
+
+    <section className="relative overflow-hidden bg-[#0d203c] py-24 text-white"><img src={PHOTOS.clubhouse} alt="Trosky clubhouse and outdoor community space" className="absolute inset-0 h-full w-full object-cover opacity-25" /><div className="absolute inset-0 bg-[#0d203c]/80" /><div className="relative mx-auto max-w-4xl px-6 text-center"><p className="base44-eyebrow mb-4">More than the score</p><h2 className="font-display text-5xl leading-none tracking-wide sm:text-7xl">Austin's Community Sports & Event Destination.</h2><p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-white/75">Trosky is built around family, community, competition, and wellness—so your time here feels like more than another reservation.</p><Link to="/our-story" className="mt-9 inline-flex text-xs font-bold uppercase tracking-wider text-primary">OUR STORY →</Link></div></section>
+
+    <section className="bg-[#f6f3ee] py-20 sm:py-24"><div className="mx-auto max-w-7xl px-6 lg:px-8"><p className="base44-eyebrow mb-3">Thoughtful details, all in one place</p><h2 className="font-display max-w-4xl text-5xl leading-none tracking-wide sm:text-7xl">Amenities Built Around the Experience</h2><div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{amenities.map((item, i) => <div key={item} className="bg-white p-6"><p className="font-display text-4xl text-primary">0{i + 1}</p><h3 className="mt-8 font-display text-2xl tracking-wide">{item}</h3></div>)}</div></div></section>
+
+    <section className="bg-white py-20 sm:py-24"><div className="mx-auto max-w-7xl px-6 lg:px-8"><p className="base44-eyebrow mb-3">Build it with us</p><h2 className="font-display text-5xl leading-none tracking-wide sm:text-7xl">Sponsors, Partners & Vendors</h2><div className="mt-12 grid gap-5 md:grid-cols-3">{partners.map((item) => <div key={item} className="rounded-2xl border border-border p-7"><h3 className="font-display text-3xl tracking-wide">{item}</h3><p className="mt-4 text-sm leading-relaxed text-muted-foreground">Be part of the experience people remember at Trosky Sports Club.</p></div>)}</div><Link to="/partner-with-us" className="mt-9 inline-flex text-xs font-bold uppercase tracking-wider text-primary">PARTNER WITH TROSKY →</Link></div></section>
+
+    <section className="bg-primary py-20 text-primary-foreground sm:py-24"><div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1fr_auto] lg:items-end lg:px-8"><div><p className="text-xs font-bold uppercase tracking-[0.25em]">Your first visit starts here</p><h2 className="mt-3 font-display text-5xl leading-none tracking-wide sm:text-7xl">Come See It for Yourself</h2><p className="mt-6 max-w-xl text-lg leading-relaxed text-primary-foreground/80">Tour the facility, plan an event, or ask the team what fits your next day at Trosky.</p></div><Link to="/contact-us" className="inline-flex min-h-12 items-center justify-center rounded-sm bg-[#080b10] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-[#0d203c]">SCHEDULE A TOUR</Link></div></section>
+    <Footer />
+  </div>;
 }

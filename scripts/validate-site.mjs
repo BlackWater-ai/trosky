@@ -160,8 +160,28 @@ try {
 for (const snippet of ['<video', 'autoPlay', 'muted', 'loop', 'playsInline', '/trosky-sports-club-hero.mp4']) {
   if (!home.includes(snippet)) fail(`Home hero must include original video behavior: ${snippet}`);
 }
-if (home.includes('Bring the Crew') || home.includes('Founding Offer — $79/month')) {
-  fail('Home must avoid repeated offer and membership-pricing blocks');
+if (home.includes('Bring the Crew')) fail('Legacy home copy must not return: Bring the Crew');
+
+const base44HomeTitles = [
+  'First Visit Offer',
+  'Founding Offer — $79/month',
+  'Facility At A Glance',
+  'Explore the Facility',
+  'One Facility. Endless Ways to Use It.',
+  'Day Passes / Memberships',
+  'VIP Memberships',
+  'Upcoming Events at Trosky',
+  'Training, Lessons & Camps',
+  "Austin's Community Sports & Event Destination.",
+  'Amenities Built Around the Experience',
+  'Sponsors, Partners & Vendors',
+  'Come See It for Yourself',
+];
+let homeTitlePosition = -1;
+for (const title of base44HomeTitles) {
+  const next = home.indexOf(title);
+  if (next <= homeTitlePosition) fail(`Home must include Base44 section in order: ${title}`);
+  homeTitlePosition = next;
 }
 
 for (const phrase of [
