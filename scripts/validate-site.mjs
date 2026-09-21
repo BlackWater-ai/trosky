@@ -84,6 +84,15 @@ const contactPage = readFileSync(join(SRC, 'pages/ContactUs.jsx'), 'utf8');
 if (contactPage.includes('For event rentals and camps')) {
   fail('Helper copy under General Contact Form must stay removed');
 }
+if (!contactPage.includes("fetch('https://formsubmit.co/ajax/Gabe@troskysportsclub.com'")) {
+  fail('Contact form must send to Gabe as primary recipient');
+}
+if (!contactPage.includes("_cc: 'Troy@troskysportsclub.com'")) {
+  fail('Contact form must copy Troy Fulks');
+}
+if (!contactPage.includes('space-y-3 border-t border-border pt-5')) {
+  fail('Contact cards must keep each person’s email and phone clearly separated');
+}
 
 const campsPage = readFileSync(join(SRC, 'pages/Camps.jsx'), 'utf8');
 const coachesPage = readFileSync(join(SRC, 'pages/Coaches.jsx'), 'utf8');
