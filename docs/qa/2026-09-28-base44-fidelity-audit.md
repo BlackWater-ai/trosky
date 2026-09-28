@@ -18,6 +18,13 @@ Date: 2026-09-28
 | `/coaches`, `/camps`, `/gallery`, `/our-story` | 320, 375, 390, 430, 768, desktop | Base44 program, gallery, and story hierarchy | Static build passed; no broken local asset references found in source review. | pending public preview |
 | `/partners`, `/policies`, `/vip`, `/contact-us`, `/partner-with-us` | 320, 375, 390, 430, 768, desktop | Base44 policy/VIP/contact content; Gabe Notes exception on partner page | Static link, contact, and Partner-boundary tests passed. | pending public preview |
 
+## Public-preview verification
+
+- Branch preview: `https://trosky-q7gx-git-cursor-trosky-spor-f13b27-stefan-fulks-projects.vercel.app/`
+- Anonymous header checks returned `HTTP/2 200`, `server: Vercel`, and `content-type: text/html; charset=utf-8` for both `/` and `/partner-with-us`.
+- The deployed HTML references `assets/index-DjrRwlNN.js`, matching the verified final production build.
+- An independent in-app-browser session opened the homepage without a Vercel sign-in prompt and confirmed the hero offer, full passes policy, VIP benefits, events, programs, story video, amenities, Fluid booking links, Events & Venue links, and verified footer contact details.
+
 ## Limitation and next verification
 
-Both available browser surfaces reject local `127.0.0.1` previews with `ERR_BLOCKED_BY_CLIENT`. The final width-by-width visual and anonymous-access checks will be performed against the Vercel branch preview after the branch is pushed. No production/custom-domain deployment is in scope.
+Both available browser surfaces reject local `127.0.0.1` previews with `ERR_BLOCKED_BY_CLIENT`; the deployed preview was used for the final smoke test instead. No production/custom-domain deployment is in scope.
