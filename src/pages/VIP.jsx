@@ -7,13 +7,17 @@ import { PHOTOS } from '@/lib/photos';
 
 const vip = [
   'Access for 1 adult',
-  'Guest passes each month',
-  'Daily court bookings (1 booking per day, 2 hour max)',
+  '10 guest passes per month',
+  'Daily court bookings',
   'Unlimited facility access',
+  '1 booking per day',
+  '2 hour max booking',
   'Private locker rooms',
   'Free sauna & cold plunge',
   'Free equipment rentals',
   'Free VIP sections',
+  'Podcast room usage',
+  '25% off private venue rentals',
   '10 day booking window',
   '24 hour booking cancellation window',
 ];
@@ -21,14 +25,19 @@ const vip = [
 const family = [
   'Access for 2 adults 18+',
   'Kids 13 years or younger included',
-  'Guest passes each month',
-  'Daily court bookings (1 booking per day, 2 hour max)',
+  '10 guest passes per month',
+  'Daily court bookings',
   'Unlimited facility access',
+  '1 booking per day',
+  '2 hour max booking',
   'Private locker rooms',
   'Free sauna & cold plunge',
   'Free equipment rentals',
   'Free VIP sections',
+  'Podcast room usage',
+  '25% off private venue rentals',
   '10 day booking window',
+  '24 hour booking cancellation window',
 ];
 
 export default function VIP() {
@@ -48,6 +57,7 @@ export default function VIP() {
             <p className="font-inter text-xs tracking-widest uppercase text-muted-foreground mb-2">Individual</p>
             <h2 className="font-display text-4xl tracking-wider mb-2">VIP Membership</h2>
             <p className="font-display text-3xl text-primary mb-6">$299.99/month</p>
+            <p className="font-inter text-sm text-muted-foreground mb-6">Premium access for one adult, with priority booking, guest passes, and a more flexible Trosky experience.</p>
             <ul className="space-y-2 mb-8">
               {vip.map((item) => (
                 <li key={item} className="font-inter text-sm text-muted-foreground">
@@ -68,6 +78,7 @@ export default function VIP() {
             <p className="font-inter text-xs tracking-widest uppercase text-primary mb-2">Family</p>
             <h2 className="font-display text-4xl tracking-wider mb-2">VIP Family</h2>
             <p className="font-display text-3xl text-primary mb-6">$499.99/month</p>
+            <p className="font-inter text-sm text-muted-foreground mb-6">Premium access for two adults and children 13 and younger, with priority booking and family-ready club perks.</p>
             <ul className="space-y-2 mb-8">
               {family.map((item) => (
                 <li key={item} className="font-inter text-sm text-muted-foreground">

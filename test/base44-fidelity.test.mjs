@@ -23,3 +23,13 @@ test('homepage carries Base44 VIP, event, and amenity detail', () => {
     'Massage Chair', 'Outdoor Environment', 'Sponsorship & Advertising Inquiries',
   ]) assert.match(home, new RegExp(text))
 })
+
+test('pass and VIP routes retain Base44 pricing and policy language', () => {
+  const passes = readFileSync(new URL('../src/pages/DayPasses.jsx', import.meta.url), 'utf8')
+  const vip = readFileSync(new URL('../src/pages/VIP.jsx', import.meta.url), 'utf8')
+  assert.match(passes, /Includes entry for you plus up to 3 guests/)
+  assert.match(passes, /Optional Upgrades & Reservations/)
+  assert.match(vip, /\$299\.99\/month/)
+  assert.match(vip, /\$499\.99\/month/)
+  assert.match(vip, /Podcast room usage/)
+})
