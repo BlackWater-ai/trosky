@@ -6,6 +6,8 @@ import { ImageHero, FinalCTA } from '../components/PageSections';
 import { PHOTOS } from '@/lib/photos';
 import { STORY_VIDEO } from '@/lib/constants';
 
+// Base44-approved story video: https://www.youtube.com/watch?v=AWecRQkdnWg
+
 const values = [
   { title: 'Family First', body: 'Built by a family, for families. Kids, parents, and athletes all belong here.' },
   { title: 'Community', body: 'A place where people come together, stay active, and leave richer than they arrived.' },

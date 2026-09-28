@@ -1,6 +1,6 @@
 import { ArrowRight, Facebook, Instagram, Mail, Phone } from 'lucide-react';
 import SmartLink from './SmartLink';
-import { ADDRESS, CONTACTS, FLUID_BOOKING, FOOTER_LINKS, SOCIAL } from '@/lib/constants';
+import { ADDRESS, CONTACTS, EVENTS_VENUE_URL, FLUID_BOOKING, FOOTER_LINKS, SOCIAL } from '@/lib/constants';
 import { PHOTOS } from '@/lib/photos';
 
 function TikTokIcon({ className }) {
@@ -39,10 +39,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="relative bg-[#090a0c] text-white overflow-hidden">
+      <div className="relative bg-[#080b10] text-white overflow-hidden">
         <div className="absolute inset-y-0 right-0 w-1/3 hidden lg:block pointer-events-none">
           <img src={PHOTOS.courts} alt="" className="w-full h-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#090a0c]" />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#080b10]" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 grid md:grid-cols-3 gap-12">
@@ -78,6 +78,14 @@ export default function Footer() {
                 );
               })}
             </div>
+            <a
+              href={EVENTS_VENUE_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex font-inter text-sm text-primary hover:text-white transition-colors"
+            >
+              Plan an event →
+            </a>
           </div>
 
           <div>

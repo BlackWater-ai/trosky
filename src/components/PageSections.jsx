@@ -7,7 +7,7 @@ const ctaClass =
 
 export function PageHeader({ kicker, title, subtitle }) {
   return (
-    <section className="pt-32 pb-16 bg-secondary">
+    <section className="pt-32 pb-16 bg-[#080b10] text-white">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -16,13 +16,13 @@ export function PageHeader({ kicker, title, subtitle }) {
           className="text-center"
         >
           {kicker && (
-            <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-4 font-medium">
+            <p className="base44-eyebrow mb-4">
               {kicker}
             </p>
           )}
-          <h1 className="font-display text-5xl md:text-7xl text-foreground tracking-wider mb-5">{title}</h1>
+          <h1 className="font-display text-5xl md:text-7xl text-white tracking-wider mb-5">{title}</h1>
           {subtitle && (
-            <p className="font-inter text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="font-inter text-white/70 text-lg leading-relaxed max-w-2xl mx-auto">
               {subtitle}
             </p>
           )}
@@ -34,7 +34,7 @@ export function PageHeader({ kicker, title, subtitle }) {
 
 export function ImageHero({ kicker, title, subtitle, image, children }) {
   return (
-    <section className="relative pt-40 pb-24 overflow-hidden bg-foreground">
+    <section className="relative pt-40 pb-24 overflow-hidden bg-[#080b10]">
       <div className="absolute inset-0">
         <img src={image} alt="" className="w-full h-full object-cover object-center opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/80 to-foreground/40" />
@@ -47,7 +47,7 @@ export function ImageHero({ kicker, title, subtitle, image, children }) {
           className="max-w-3xl"
         >
           {kicker && (
-            <p className="font-inter text-sm tracking-[0.3em] text-white/50 uppercase mb-4 font-medium">
+            <p className="base44-eyebrow mb-4">
               {kicker}
             </p>
           )}

@@ -15,7 +15,7 @@ const developmentAreas = [
   {
     icon: GraduationCap,
     title: 'Lessons',
-    desc: 'Private and group lessons across pickleball, padel, soccer, volleyball, and more — from beginner fundamentals to advanced technique.',
+    desc: 'Private lessons and group lessons across pickleball, padel, soccer, volleyball, and more — from beginner fundamentals to advanced technique.',
   },
   {
     icon: Tent,
@@ -64,7 +64,7 @@ export default function Coaches() {
             transition={{ duration: 0.7 }}
             className="max-w-3xl"
           >
-            <p className="font-inter text-sm tracking-[0.3em] text-white/50 uppercase mb-4 font-medium">
+            <p className="base44-eyebrow mb-4">
               Learn and Develop
             </p>
             <h1 className="font-display text-6xl md:text-8xl text-white tracking-wider leading-none mb-6">
@@ -96,7 +96,7 @@ export default function Coaches() {
             transition={{ duration: 0.7 }}
             className="text-center mb-14"
           >
-            <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-3 font-medium">
+            <p className="base44-eyebrow mb-3">
               Learn and Develop
             </p>
             <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider">Ways to Grow at Trosky</h2>
@@ -187,7 +187,7 @@ export default function Coaches() {
           >
             <h2 className="font-display text-4xl md:text-5xl text-white tracking-wider mb-4">Ready to Train With Us?</h2>
             <p className="font-inter text-white/60 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-              Reach out about lessons, clinics, camps, or team training — or book court time to practice on your own.
+              Reach out about private lessons, clinics, camps, or team training — or book court time to practice on your own.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

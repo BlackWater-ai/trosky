@@ -11,13 +11,13 @@ export default function Reservations() {
       <PageHeader
         kicker="Play"
         title="Reservations"
-        subtitle="Court and field reservations are handled through Fluid, Trosky’s booking platform. Book pickleball, padel, turf time, and more."
+        subtitle="Reserve pickleball, padel, turf time, and more through Fluid, Trosky’s booking platform. Court reservations, VIP lounges, and premium experiences are available as separate selections."
       />
 
       <section className="py-24 bg-secondary">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <div className="bg-white border border-border rounded-xl p-8 md:p-10">
-            <h2 className="font-display text-3xl text-foreground tracking-wider mb-4">How Booking Works</h2>
+            <h2 className="font-display text-3xl text-foreground tracking-wider mb-4">Book Your Time at Trosky</h2>
             <ol className="space-y-4 font-inter text-muted-foreground leading-relaxed mb-8">
               <li>
                 <span className="font-semibold text-foreground">1. Open Fluid.</span> All court, field, coach, membership,

@@ -4,6 +4,10 @@
 
 @layer base {
   :root {
+    --base44-ink: #080b10;
+    --base44-navy: #0d203c;
+    --base44-orange: #ff5a1f;
+    --base44-paper: #f6f3ee;
     --background: 36 29% 97%;
     --foreground: 240 8% 5%;
     --primary: 18 100% 52%;
@@ -46,5 +50,15 @@
   textarea:focus-visible {
     outline: 2px solid hsl(var(--primary));
     outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .base44-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.28em] text-primary;
+  }
+
+  .base44-panel {
+    @apply rounded-2xl border border-white/15 bg-white/5;
   }
 }

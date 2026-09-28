@@ -20,6 +20,7 @@ const included = [
   'Dog area',
   'Food and drink areas',
   'Equipment, sports balls & rentals — complimentary or small rental fee depending on activity',
+  'Cold plunge and sauna access',
   'Access to the full community atmosphere',
 ];
 
@@ -27,8 +28,6 @@ const upgrades = [
   'Court reservations',
   'VIP lounges',
   'Events',
-  'Cold plunge',
-  'Sauna',
   'Rentals',
   'Food trucks',
   'Premium experiences',
@@ -36,8 +35,8 @@ const upgrades = [
 
 const plans = [
   { name: 'Advantage', price: '$79/mo', note: 'Founding offer — first 99 members', to: FLUID_ADVANTAGE },
-  { name: 'VIP', price: '$299.99/mo', note: 'Premium all-access for one adult', to: FLUID_VIP },
-  { name: 'VIP Family', price: '$499.99/mo', note: 'Two adults + kids 13 and under', to: FLUID_VIP_FAMILY },
+  { name: 'VIP', price: '$299.99/month', note: 'Premium all-access for one adult', to: FLUID_VIP },
+  { name: 'VIP Family', price: '$499.99/month', note: 'Two adults + kids 13 and under', to: FLUID_VIP_FAMILY },
 ];
 
 export default function DayPasses() {
@@ -83,9 +82,9 @@ export default function DayPasses() {
             <ul className="space-y-3">{included.map((item) => <li key={item} className="font-inter text-sm text-muted-foreground leading-relaxed">• {item}</li>)}</ul>
           </div>
           <div>
-            <h2 className="font-display text-3xl text-foreground tracking-wider mb-5">Optional Upgrades</h2>
+            <h2 className="font-display text-3xl text-foreground tracking-wider mb-5">Optional Upgrades & Reservations</h2>
             <ul className="space-y-3 mb-6">{upgrades.map((item) => <li key={item} className="font-inter text-sm text-muted-foreground">• {item}</li>)}</ul>
-            <p className="font-inter text-sm text-muted-foreground leading-relaxed">Court reservations, VIP lounges, events, cold plunge and sauna access, rentals, food trucks, and other premium experiences are optional upgrades or separate reservations and are not included with the Day Pass.</p>
+            <p className="font-inter text-sm text-muted-foreground leading-relaxed">Court reservations, VIP lounges, events, rentals, food trucks, and other premium experiences are optional upgrades or separate reservations and are not included with the Day Pass.</p>
           </div>
         </div>
       </section>

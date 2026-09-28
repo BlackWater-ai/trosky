@@ -26,7 +26,7 @@ export default function Camps() {
           to="/contact-us"
           className="bg-white text-foreground px-8 py-4 font-inter font-bold text-sm tracking-wider uppercase rounded-sm hover:bg-white/90 inline-flex items-center justify-center gap-2"
         >
-          Inquire About Camps <ArrowRight className="w-4 h-4" />
+          Inquire About Camp Start Dates <ArrowRight className="w-4 h-4" />
         </Link>
       </ImageHero>
 
