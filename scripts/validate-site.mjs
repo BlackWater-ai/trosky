@@ -114,6 +114,18 @@ if (!app.includes('EventsRedirect') || !app.includes('path="/events"')) {
   fail('App.jsx must redirect /events via EventsRedirect');
 }
 
+const REFERENCE_ROUTES = ['/', '/facility', '/day-passes', '/reservations', '/coaches', '/partner-with-us', '/contact-us', '/camps', '/gallery', '/our-story', '/partners', '/policies', '/vip'];
+for (const route of REFERENCE_ROUTES) {
+  if (!app.includes(`path="${route}"`)) fail(`Base44 reference route missing from App.jsx: ${route}`);
+}
+
+const referenceLedger = join(ROOT, 'docs', 'qa', '2026-09-28-base44-reference-ledger.md');
+try {
+  statSync(referenceLedger);
+} catch {
+  fail('Base44 reference ledger is missing');
+}
+
 const seo = readFileSync(join(SRC, 'components/Seo.jsx'), 'utf8');
 for (const route of ['/', '/facility', '/day-passes', '/reservations', '/coaches', '/contact-us', '/camps', '/gallery', '/our-story', '/partners', '/policies', '/vip']) {
   if (!seo.includes(`'${route}'`)) fail(`SEO metadata must cover route: ${route}`);
