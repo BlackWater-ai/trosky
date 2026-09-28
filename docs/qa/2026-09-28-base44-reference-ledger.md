@@ -26,3 +26,5 @@ This is the implementation reference for the approved Sports-site rebuild. Each 
 - The verified address and current contact details supersede Base44’s generic Austin contact location.
 - Base44 explicitly includes cold-plunge and sauna access among pass inclusions. This supersedes conflicting earlier local pass copy unless a verified operations source later changes it.
 - Gabe’s Notes apply only to the sponsorship/partner-deck experience. They do not replace Sports-site content outside `/partner-with-us`.
+
+| Public preview | Anonymous `200`, current build asset, Base44 fidelity smoke test | pending | required before handoff |
