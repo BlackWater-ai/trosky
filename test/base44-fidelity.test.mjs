@@ -19,6 +19,10 @@ test('hero video uses an upward crop that keeps speakers in frame', () => {
   assert.match(home, /object-\[center_30%\]/)
 })
 
+test('hero video remains bright enough to show the on-screen action', () => {
+  assert.match(home, /opacity-70/)
+})
+
 test('homepage carries Base44 VIP, event, and amenity detail', () => {
   for (const text of [
     '10 guest passes per month', '1 booking per day', '2 hour max booking',
