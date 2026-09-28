@@ -14,3 +14,12 @@ test('home preserves Base44’s first-visit offer, day-pass policy, and VIP bene
 test('home retains the approved original hero video asset', () => {
   assert.match(home, /trosky-sports-club-hero\.mp4/)
 })
+
+test('homepage carries Base44 VIP, event, and amenity detail', () => {
+  for (const text of [
+    '10 guest passes per month', '1 booking per day', '2 hour max booking',
+    'Private locker rooms', 'Podcast room usage', '25% off private venue rentals',
+    'Open Play Night', 'Movie Night on the Turf', 'Pickleball Social',
+    'Massage Chair', 'Outdoor Environment', 'Sponsorship & Advertising Inquiries',
+  ]) assert.match(home, new RegExp(text))
+})
