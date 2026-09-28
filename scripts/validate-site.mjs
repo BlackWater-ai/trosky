@@ -207,6 +207,24 @@ for (const plan of ['FLUID_VIP', 'FLUID_VIP_FAMILY']) {
   if (!vipPage.includes(plan)) fail(`VIP page must deep-link to ${plan}`);
 }
 
+const partnerPage = readFileSync(join(SRC, 'pages/PartnerWithUs.jsx'), 'utf8');
+const partnerText = partnerPage.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+for (const phrase of [
+  'THE HOME OF YOUR NEXT GREAT PARTNERSHIP',
+  'BE A PART OF SOMETHING SPECIAL',
+  'MORE THAN A PLACE TO PLAY.',
+  'MORE THAN VISIBILITY.',
+  'STANDARD PARTNER — $499/MONTH',
+  'PREMIER PARTNER — $999/MONTH',
+  'Golden Ticket — Year-Round Owner Access',
+  'A CLOSER LOOK',
+]) {
+  if (!partnerText.includes(phrase)) fail(`Partner page missing Gabe-approved update: ${phrase}`);
+}
+for (const removed of ['Food & Drinks', 'Training & Coaching']) {
+  if (partnerPage.includes(removed)) fail(`Partner page still includes removed section: ${removed}`);
+}
+
 for (const page of ['Facility.jsx', 'DayPasses.jsx', 'VIP.jsx', 'Coaches.jsx', 'Camps.jsx', 'OurStory.jsx', 'PartnerWithUs.jsx', 'Partners.jsx', 'Gallery.jsx', 'ContactUs.jsx', 'Reservations.jsx', 'Policies.jsx']) {
   const source = readFileSync(join(SRC, 'pages', page), 'utf8');
   if (!source.includes('base44-eyebrow') && !source.includes('PageHeader') && !source.includes('ImageHero')) {
