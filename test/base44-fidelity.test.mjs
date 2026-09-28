@@ -20,7 +20,8 @@ test('hero video uses an upward crop that keeps speakers in frame', () => {
 })
 
 test('hero video remains bright enough to show the on-screen action', () => {
-  assert.match(home, /opacity-70/)
+  assert.match(home, /opacity-85/)
+  assert.match(home, /via-\[#080b10\]\/60/)
 })
 
 test('homepage carries Base44 VIP, event, and amenity detail', () => {
