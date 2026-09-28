@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import ScrollToTop from './components/ScrollToTop';
 import Seo from './components/Seo';
 import Home from './pages/Home';
@@ -45,6 +46,7 @@ export default function App() {
         <Route path="/vip" element={<VIP />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Analytics />
     </>
   );
 }

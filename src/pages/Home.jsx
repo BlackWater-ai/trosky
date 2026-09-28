@@ -41,8 +41,8 @@ const passes = [
   { title: 'Group Day Pass', price: '$50', description: 'Bring the crew for a shared day out at the club.', href: FLUID_GROUP_DAY_PASS },
 ];
 const vipPlans = [
-  { title: 'VIP Individual', price: '$149 / month', href: FLUID_VIP, items: ['Priority access and booking', 'VIP room and recovery access', 'Club perks and member events'] },
-  { title: 'VIP Family', price: '$229 / month', href: FLUID_VIP_FAMILY, items: ['Bring the household into the club', 'Priority access and booking', 'Family-friendly events and VIP perks'] },
+  { title: 'VIP Individual', price: '$299.99 / month', href: FLUID_VIP, items: ['Priority access and booking', 'VIP room and recovery access', 'Club perks and member events'] },
+  { title: 'VIP Family', price: '$499.99 / month', href: FLUID_VIP_FAMILY, items: ['Bring the household into the club', 'Priority access and booking', 'Family-friendly events and VIP perks'] },
 ];
 const events = [['Open Play', 'Weeknights & weekends'], ['Community Watch Nights', 'Big games, good food, and neighbors'], ['Social Tournaments', 'Friendly competition for every level'], ['Family Days', 'A full day made for the whole crew'], ['Private Celebrations', 'Your milestone, hosted at Trosky'], ['Team Building', 'Get your group out of the office']];
 const programs = [['Soccer Development', 'Skills, movement, and confidence for growing players.'], ['Pickleball Lessons', 'Learn the game or sharpen your next-level play.'], ['Padel Lessons', 'Fast, social, and coached for your pace.'], ['Multi-Sport Camps', 'Active school-break days built around trying more.'], ['Performance Training', 'Purposeful work for athletes and teams.'], ['Team Training', 'Bring your group to train, compete, and connect.']];
