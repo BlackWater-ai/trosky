@@ -15,6 +15,10 @@ test('home retains the approved original hero video asset', () => {
   assert.match(home, /trosky-sports-club-hero\.mp4/)
 })
 
+test('hero video uses an upward crop that keeps speakers in frame', () => {
+  assert.match(home, /object-\[center_30%\]/)
+})
+
 test('homepage carries Base44 VIP, event, and amenity detail', () => {
   for (const text of [
     '10 guest passes per month', '1 booking per day', '2 hour max booking',
