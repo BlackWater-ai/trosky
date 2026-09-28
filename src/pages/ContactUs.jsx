@@ -6,6 +6,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { CONTACTS, EVENTS_VENUE_URL, REASON_OPTIONS } from '@/lib/constants';
 
+// FormSubmit delivers the general-contact form to Gabe and copies Troy.
+
 const faqs = [
   {
     question: 'What is Trosky Sports Club?',
@@ -24,7 +26,7 @@ const faqs = [
   {
     question: 'What does a Day Pass include?',
     answer:
-      'A Day Pass gives access to the club atmosphere for the day, including open play before peak hours, turf field activities when available, hangout areas, kids and dog areas, games, and food and drink areas. Some experiences like court reservations, VIP spaces, sauna, cold plunge, food trucks, and premium rentals are separate.',
+      'A Day Pass gives access to the club atmosphere for the day, including open play before peak hours, turf field activities when available, hangout areas, kids and dog areas, games, food and drink areas, cold plunge, and sauna access. Court reservations, VIP spaces, food trucks, and premium rentals are separate.',
   },
   {
     question: 'How do I book a court?',

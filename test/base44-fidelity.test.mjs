@@ -45,3 +45,13 @@ test('program, story, and partner routes preserve reference content boundaries',
   assert.match(partner, /STANDARD PARTNER — \$499\/MONTH/)
   assert.doesNotMatch(partner, /Podcast Sessions/)
 })
+
+test('shared shell retains verified contacts and Base44 navigation intent', () => {
+  const constants = readFileSync(new URL('../src/lib/constants.js', import.meta.url), 'utf8')
+  const footer = readFileSync(new URL('../src/components/Footer.jsx', import.meta.url), 'utf8')
+  const contact = readFileSync(new URL('../src/pages/ContactUs.jsx', import.meta.url), 'utf8')
+  assert.match(constants, /Events & Venue/)
+  assert.match(footer, /Book Through Fluid/)
+  assert.match(contact, /FormSubmit/)
+  assert.match(contact, /Troy@troskysportsclub\.com/)
+})
