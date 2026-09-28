@@ -33,3 +33,15 @@ test('pass and VIP routes retain Base44 pricing and policy language', () => {
   assert.match(vip, /\$499\.99\/month/)
   assert.match(vip, /Podcast room usage/)
 })
+
+test('program, story, and partner routes preserve reference content boundaries', () => {
+  const coaches = readFileSync(new URL('../src/pages/Coaches.jsx', import.meta.url), 'utf8')
+  const story = readFileSync(new URL('../src/pages/OurStory.jsx', import.meta.url), 'utf8')
+  const partner = readFileSync(new URL('../src/pages/PartnerWithUs.jsx', import.meta.url), 'utf8')
+  assert.match(coaches, /Private lessons/)
+  assert.match(coaches, /team training/)
+  assert.match(story, /A place where people come together/)
+  assert.match(story, /AWecRQkdnWg/)
+  assert.match(partner, /STANDARD PARTNER — \$499\/MONTH/)
+  assert.doesNotMatch(partner, /Podcast Sessions/)
+})
