@@ -16,7 +16,7 @@ test('home retains the approved original hero video asset', () => {
 })
 
 test('hero video uses an upward crop that keeps speakers in frame', () => {
-  assert.match(home, /object-\[center_30%\]/)
+  assert.match(home, /object-top/)
 })
 
 test('hero video remains bright enough to show the on-screen action', () => {
