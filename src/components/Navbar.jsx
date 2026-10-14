@@ -18,6 +18,7 @@ const aboutLinks = [
   { label: 'Partners', href: '/partners', isPage: true },
   { label: 'Policies', href: '/policies', isPage: true },
   { label: 'FAQs', href: '/contact-us', isPage: true },
+  { label: 'Contact', href: '/contact-us', isPage: true },
 ];
 
 export default function Navbar() {

@@ -30,12 +30,12 @@ export default function HeroSection({ heroImage }) {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="absolute top-24 left-0 right-0 flex justify-center z-10"
+        className="absolute top-24 left-0 right-0 z-10 flex justify-center px-4"
       >
-        <div className="bg-[#101215]/90 backdrop-blur-md border border-accent/50 text-white px-5 py-3 rounded-xl shadow-xl transition-colors hover:bg-[#101215] focus:outline-none focus-visible:ring-4 focus-visible:ring-white/50">
-          <span className="block font-inter text-[10px] font-bold tracking-[0.24em] uppercase text-accent mb-1">First Visit</span>
-          <span className="block font-display text-2xl tracking-wide leading-none">Bring the Crew</span>
-          <span className="mt-1 block font-inter text-xs md:text-sm text-white/70">Buy one Day Pass. Bring up to 3 friends on us.</span>
+        <div className="w-full max-w-sm border-2 border-white/80 bg-primary/95 px-5 py-3 text-center text-white shadow-xl backdrop-blur-md transition-colors hover:bg-primary focus:outline-none focus-visible:ring-4 focus-visible:ring-white/50 sm:w-auto sm:max-w-none">
+          <span className="mb-1 block font-inter text-[10px] font-bold tracking-[0.24em] uppercase text-white">First Visit</span>
+          <span className="block font-display text-xl font-bold tracking-wide leading-none sm:text-2xl">Bring the Crew</span>
+          <span className="mt-1 block font-inter text-xs font-semibold text-white sm:text-sm">Buy one Day Pass. Bring up to 3 friends on us.</span>
         </div>
       </motion.a>
 

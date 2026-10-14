@@ -18,7 +18,7 @@ const courts = [
       'Designed for up to 4 players',
       'Up to 6 players max',
       'Additional players may require an extra fee',
-      'Booking window: 5 days',
+      'Booking window: 7 days',
     ],
     cta: 'Book Pickleball',
   },
@@ -33,7 +33,7 @@ const courts = [
       'Designed for up to 4 players',
       'Up to 6 players max',
       'Additional players may require an extra fee',
-      'Booking window: 5 days',
+      'Booking window: 7 days',
     ],
     cta: 'Book Padel',
     featured: true,
@@ -43,7 +43,7 @@ const courts = [
     name: 'Turf Field',
     emoji: '⚽',
     customPricing: [
-      { label: 'Volleyball Courts', price: '$50/hr' },
+      { label: 'Turf Field', price: '$50–$120/hr' },
     ],
     details: [
       'Min booking: 60 minutes · Max booking: 2 hours',

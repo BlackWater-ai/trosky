@@ -156,25 +156,6 @@ export default function ContactSection() {
             </div>
 
             <div>
-              <h3 className="font-inter font-bold text-foreground mb-4">General Inquiries</h3>
-              <div className="space-y-3">
-                <p className="font-inter text-muted-foreground text-sm">All inquiries go directly to our team. We'll route your message to the right person.</p>
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-                  <a href="mailto:Gabe@troskysportsclub.com" className="font-inter text-primary text-sm font-semibold hover:opacity-70 transition-opacity break-all">Gabe@troskysportsclub.com</a>
-                  <span aria-hidden="true">—</span>
-                  <a href="tel:2106328160" className="font-inter text-primary text-sm font-semibold hover:opacity-70 transition-opacity">210-632-8160</a>
-                </div>
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-                  <a href="mailto:Troy@troskysportsclub.com" className="font-inter text-primary text-sm font-semibold hover:opacity-70 transition-opacity break-all">Troy@troskysportsclub.com</a>
-                  <span aria-hidden="true">—</span>
-                  <a href="tel:5129862757" className="font-inter text-primary text-sm font-semibold hover:opacity-70 transition-opacity">512-986-2757</a>
-                </div>
-              </div>
-            </div>
-
-            <div>
               <h3 className="font-inter font-bold text-foreground mb-4">Follow Us</h3>
               <div className="flex gap-4">
                 <a href="#" className="w-10 h-10 bg-secondary border border-border flex items-center justify-center hover:bg-primary/10 transition-colors rounded-sm">

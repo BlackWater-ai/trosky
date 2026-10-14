@@ -6,13 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { PHOTOS } from '@/lib/photos';
 
-const IMAGES = {
-  hero: PHOTOS.grounds,
-  facility: 'https://media.base44.com/images/public/69f3a4d87763e987202433ad/55d260354_trosky-soccer-field-movie-screen.png',
-  lounge: PHOTOS.vipLounge,
-  community: 'https://media.base44.com/images/public/69f3a4d87763e987202433ad/766427e38_TroskyPhotos-3.jpg',
-  pickleball: 'https://media.base44.com/images/public/69f3a4d87763e987202433ad/74297f1c3_TroskyPhotos-231.jpg',
-};
+const IMAGES = { hero: PHOTOS.grounds };
 
 const scrollTo = (id) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
 
@@ -128,46 +122,6 @@ export default function OurStory() {
 
 
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Supporting Image Grid */}
-      <section className="py-16 bg-secondary">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-center mb-12"
-          >
-            <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-3 font-medium">The Facility</p>
-            <h2 className="font-display text-4xl md:text-5xl text-foreground tracking-wider">Where the Vision Lives</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { img: IMAGES.facility, label: 'The Field' },
-              { img: IMAGES.lounge, label: 'The Lounge' },
-              { img: IMAGES.community, label: 'Community' },
-              { img: IMAGES.pickleball, label: 'Pickleball' },
-            ].map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="relative aspect-square overflow-hidden rounded-sm group"
-              >
-                <img src={item.img} alt={item.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors" />
-                <div className="absolute bottom-3 left-3">
-                  <span className="font-inter text-white text-xs font-semibold tracking-widest uppercase">{item.label}</span>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

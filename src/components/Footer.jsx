@@ -4,14 +4,10 @@ import { Link } from 'react-router-dom';
 const scrollTo = (id) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
 
 const links = [
-  { label: 'Facility', anchor: '#facility' },
-  { label: 'Play', anchor: '#play' },
   { label: 'Host Event', anchor: '/events', isPage: true },
-  { label: 'Memberships', anchor: '#memberships' },
-  { label: 'Programs', anchor: '#programs' },
-  { label: 'Coaches', anchor: '/coaches', isPage: true },
   { label: 'Partners', anchor: '#partners' },
   { label: 'Contact', anchor: '/contact-us', isPage: true },
+  { label: 'Policies', anchor: '/policies', isPage: true },
 ];
 
 export default function Footer() {
@@ -52,7 +48,6 @@ export default function Footer() {
                   </button>
                 )
               ))}
-              <Link to="/policies" className="font-inter text-white/60 text-sm text-left hover:text-white transition-colors">Policies</Link>
             </div>
           </div>
           <div>
