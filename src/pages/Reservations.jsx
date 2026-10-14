@@ -74,8 +74,8 @@ export default function Reservations() {
       <section className="relative pt-40 pb-24 overflow-hidden min-h-[520px] flex items-center">
         <div className="absolute inset-0">
           <img
-            src="https://media.base44.com/images/public/69f3a4d87763e987202433ad/f3aba9c70_TroskyPhotos-15.jpg"
-            alt="Trosky Sports Club Courts"
+            src="/trosky-reservations-hero.png"
+            alt="Aerial view of Trosky Sports Club courts and field"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/60" />
