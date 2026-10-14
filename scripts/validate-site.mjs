@@ -70,11 +70,17 @@ const requiredSnippets = [
   'Troy@troskysportsclub.com',
   '210-632-8160',
   '512-986-2757',
-  'mailto:${person.email}',
-  'tel:${person.tel}',
+  'mailto:Gabe@troskysportsclub.com',
+  'tel:2106328160',
+  'mailto:Troy@troskysportsclub.com',
+  'tel:5129862757',
 ];
 
-const contactFiles = [join(SRC, 'pages/ContactUs.jsx'), join(SRC, 'components/Footer.jsx'), join(SRC, 'lib/constants.js')];
+const contactFiles = [
+  join(SRC, 'pages/ContactUs.jsx'),
+  join(SRC, 'components/ContactSection.jsx'),
+  join(SRC, 'components/Footer.jsx'),
+];
 const contactBlob = contactFiles.map((f) => readFileSync(f, 'utf8')).join('\n');
 for (const snippet of requiredSnippets) {
   if (!contactBlob.includes(snippet)) fail(`Missing contact requirement: ${snippet}`);
@@ -113,6 +119,7 @@ for (const file of [join(SRC, 'components/Navbar.jsx'), join(SRC, 'components/Fo
 }
 
 const home = readFileSync(join(SRC, 'pages/Home.jsx'), 'utf8');
+const hero = readFileSync(join(SRC, 'components/HeroSection.jsx'), 'utf8');
 const heroVideoPath = join(ROOT, 'public', 'trosky-event-hero.mp4');
 try {
   statSync(heroVideoPath);
@@ -120,15 +127,16 @@ try {
   fail('Mobile-optimized Trosky hero video must be present in public/trosky-event-hero.mp4');
 }
 for (const snippet of ['<video', 'autoPlay', 'muted', 'loop', 'playsInline', '/trosky-event-hero.mp4']) {
-  if (!home.includes(snippet)) fail(`Home hero must include video background behavior: ${snippet}`);
+  if (!hero.includes(snippet)) fail(`Home hero must include video background behavior: ${snippet}`);
 }
-if (!home.includes('Bring the Crew') || !home.includes('Buy one Day Pass. Bring up to 3 friends on us.')) {
+if (!hero.includes('Bring the Crew') || !hero.includes('Buy one Day Pass. Bring up to 3 friends on us.')) {
   fail('Home must use the refined First Visit offer treatment');
 }
-if (home.includes('First Visit Offer:</span>')) {
+if (hero.includes('First Visit Offer:')) {
   fail('Home must not use the old full-width First Visit offer strip');
 }
-if (!home.includes('FLUID_ADVANTAGE') || !home.includes('href={FLUID_ADVANTAGE}')) {
+const membershipPromo = readFileSync(join(SRC, 'components/MembershipPromo.jsx'), 'utf8');
+if (!membershipPromo.includes('FLUID_ADVANTAGE') || !membershipPromo.includes('href={FLUID_ADVANTAGE}')) {
   fail('Home Founding Offer must deep-link to the Advantage plan in Fluid');
 }
 

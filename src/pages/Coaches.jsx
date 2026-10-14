@@ -48,6 +48,7 @@ export default function Coaches() {
     <div className="font-inter bg-background">
       <Navbar />
 
+      {/* Hero */}
       <section className="relative pt-40 pb-24 overflow-hidden bg-foreground">
         <div className="absolute inset-0">
           <img
@@ -64,16 +65,12 @@ export default function Coaches() {
             transition={{ duration: 0.7 }}
             className="max-w-3xl"
           >
-            <p className="font-inter text-sm tracking-[0.3em] text-white/50 uppercase mb-4 font-medium">
-              Learn and Develop
-            </p>
+            <p className="font-inter text-sm tracking-[0.3em] text-white/50 uppercase mb-4 font-medium">Learn and Develop</p>
             <h1 className="font-display text-6xl md:text-8xl text-white tracking-wider leading-none mb-6">
-              Training, Lessons
-              <br />& Camps
+              Training, Lessons<br />& Camps
             </h1>
             <p className="font-inter text-white/70 text-xl leading-relaxed mb-10 max-w-2xl">
-              Development for athletes, kids, teams, and families across multiple sports — run by experienced,
-              passionate coaches on courts, turf, and training areas.
+              Development for athletes, kids, teams, and families across multiple sports — run by experienced, passionate coaches on courts, turf, and training areas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -87,6 +84,7 @@ export default function Coaches() {
         </div>
       </section>
 
+      {/* Development Areas */}
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
@@ -96,9 +94,7 @@ export default function Coaches() {
             transition={{ duration: 0.7 }}
             className="text-center mb-14"
           >
-            <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-3 font-medium">
-              Learn and Develop
-            </p>
+            <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-3 font-medium">Learn and Develop</p>
             <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider">Ways to Grow at Trosky</h2>
           </motion.div>
 
@@ -123,6 +119,7 @@ export default function Coaches() {
         </div>
       </section>
 
+      {/* Coaching Team */}
       <section className="py-24 bg-secondary">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
@@ -133,12 +130,9 @@ export default function Coaches() {
             className="text-center mb-14"
           >
             <p className="font-inter text-sm tracking-[0.3em] text-primary uppercase mb-3 font-medium">The Team</p>
-            <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider mb-4">
-              Coaching & Training Team
-            </h2>
+            <h2 className="font-display text-4xl md:text-6xl text-foreground tracking-wider mb-4">Coaching & Training Team</h2>
             <p className="font-inter text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-              Meet the people leading training and development at Trosky. Coach profiles are added as our programming
-              grows.
+              Meet the people leading training and development at Trosky. Coach profiles are added as our programming grows.
             </p>
           </motion.div>
 
@@ -150,26 +144,18 @@ export default function Coaches() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className={`rounded-xl border p-7 flex flex-col ${
-                  member.confirmed ? 'bg-white border-primary/30' : 'bg-white border-border'
-                }`}
+                className={`rounded-xl border p-7 flex flex-col ${member.confirmed ? 'bg-white border-primary/30' : 'bg-white border-border'}`}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-5">
                   <span className="font-display text-xl text-primary tracking-wider">
-                    {member.name
-                      .split(' ')
-                      .map((w) => w[0])
-                      .slice(0, 2)
-                      .join('')}
+                    {member.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}
                   </span>
                 </div>
                 <span className="font-inter text-xs font-bold tracking-widest uppercase text-primary bg-primary/10 self-start px-3 py-1 rounded-full mb-3">
                   {member.sport}
                 </span>
                 <h3 className="font-inter font-bold text-foreground">{member.name}</h3>
-                <p className="font-inter text-xs text-muted-foreground font-medium uppercase tracking-wide mb-3">
-                  {member.role}
-                </p>
+                <p className="font-inter text-xs text-muted-foreground font-medium uppercase tracking-wide mb-3">{member.role}</p>
                 <p className="font-inter text-sm text-muted-foreground leading-relaxed flex-1">{member.bio}</p>
               </motion.div>
             ))}
@@ -177,6 +163,7 @@ export default function Coaches() {
         </div>
       </section>
 
+      {/* Inquiry Paths */}
       <section className="py-20 bg-foreground">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
