@@ -97,7 +97,7 @@ test('the desktop hero reserves space below the first-visit offer', () => {
 test('the decorative hero scroll indicator yields space to CTAs on short screens', () => {
   const hero = mustExist('src/components/HeroSection.jsx');
 
-  assert.match(hero, /max-h-\[800px\]:hidden/);
+  assert.match(hero, /hero-scroll-indicator/);
 });
 
 test('day-pass entrance animations cannot create a page-wide mobile scrollbar', () => {

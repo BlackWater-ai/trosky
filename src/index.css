@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (max-height: 800px) {
+  .hero-scroll-indicator {
+    display: none;
+  }
+}
+
 @layer base {
   :root {
     --font-inter: 'Inter', sans-serif;
