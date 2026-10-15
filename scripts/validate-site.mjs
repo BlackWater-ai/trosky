@@ -120,13 +120,13 @@ for (const file of [join(SRC, 'components/Navbar.jsx'), join(SRC, 'components/Fo
 
 const home = readFileSync(join(SRC, 'pages/Home.jsx'), 'utf8');
 const hero = readFileSync(join(SRC, 'components/HeroSection.jsx'), 'utf8');
-const heroVideoPath = join(ROOT, 'public', 'trosky-event-hero.mp4');
+const heroVideoPath = join(ROOT, 'public', 'trosky-hero.mp4');
 try {
   statSync(heroVideoPath);
 } catch {
-  fail('Mobile-optimized Trosky hero video must be present in public/trosky-event-hero.mp4');
+  fail('Original high-definition Trosky hero video must be present in public/trosky-hero.mp4');
 }
-for (const snippet of ['<video', 'autoPlay', 'muted', 'loop', 'playsInline', '/trosky-event-hero.mp4']) {
+for (const snippet of ['<video', 'autoPlay', 'muted', 'loop', 'playsInline', '/trosky-hero.mp4']) {
   if (!hero.includes(snippet)) fail(`Home hero must include video background behavior: ${snippet}`);
 }
 if (!hero.includes('Bring the Crew') || !hero.includes('Buy one Day Pass. Bring up to 3 friends on us.')) {

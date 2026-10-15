@@ -11,11 +11,12 @@ export default function HeroSection({ heroImage }) {
       {/* Background Video */}
       <div className="absolute inset-0">
         <video
-          src="/trosky-event-hero.mp4"
+          src="/trosky-hero.mp4"
           autoPlay
           muted
           loop
           playsInline
+          preload="metadata"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
@@ -32,20 +33,20 @@ export default function HeroSection({ heroImage }) {
         transition={{ delay: 0.2 }}
         className="absolute top-24 left-0 right-0 z-10 flex justify-center px-4"
       >
-        <div className="w-full max-w-sm border-2 border-white/80 bg-primary/95 px-5 py-3 text-center text-white shadow-xl backdrop-blur-md transition-colors hover:bg-primary focus:outline-none focus-visible:ring-4 focus-visible:ring-white/50 sm:w-auto sm:max-w-none">
-          <span className="mb-1 block font-inter text-[10px] font-bold tracking-[0.24em] uppercase text-white">First Visit</span>
-          <span className="block font-display text-xl font-bold tracking-wide leading-none sm:text-2xl">Bring the Crew</span>
-          <span className="mt-1 block font-inter text-xs font-semibold text-white sm:text-sm">Buy one Day Pass. Bring up to 3 friends on us.</span>
+        <div className="w-full max-w-md border-2 border-white/80 bg-primary/95 px-5 py-3 text-center text-white shadow-xl backdrop-blur-md transition-colors hover:bg-primary focus:outline-none focus-visible:ring-4 focus-visible:ring-white/50 sm:w-auto sm:max-w-none">
+          <span className="mb-1 block font-inter text-[10px] font-bold tracking-[0.2em] uppercase text-[#f7d66b]">First Visit</span>
+          <span className="block break-words font-display text-2xl font-bold leading-tight tracking-wide text-[#f7d66b] sm:text-3xl">Bring the Crew</span>
+          <span className="mt-1 block font-inter text-xs font-semibold leading-relaxed text-white sm:text-sm">Buy one Day Pass. Bring up to 3 friends on us.</span>
         </div>
       </motion.a>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <div className="relative z-10 mx-auto max-w-5xl px-6 pt-20 text-center sm:pt-0">
         <motion.p
           initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           transition={{ delay: 0.35, duration: 0.7 }}
-          className="font-inter text-white/70 text-sm tracking-[0.3em] uppercase mb-6 font-medium"
+          className="mb-6 hidden font-inter text-sm font-medium tracking-[0.3em] text-white/70 uppercase sm:block"
         >
           Austin's Community Sports & Event Destination
         </motion.p>

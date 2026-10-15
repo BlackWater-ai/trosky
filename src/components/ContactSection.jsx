@@ -4,7 +4,6 @@ import { Instagram, Facebook, Mail, MapPin, Phone } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
 
 const reasonOptions = [
@@ -98,16 +97,17 @@ export default function ContactSection() {
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 className="h-12 border-border rounded-sm font-inter bg-secondary"
               />
-              <Select value={form.interest} onValueChange={(val) => setForm({ ...form, interest: val })}>
-                <SelectTrigger className="h-12 border-border rounded-sm font-inter bg-secondary">
-                  <SelectValue placeholder="What are you reaching out about?" />
-                </SelectTrigger>
-                <SelectContent>
-                  {reasonOptions.map((option) => (
-                    <SelectItem key={option} value={option}>{option}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <select
+                value={form.interest}
+                onChange={(e) => setForm({ ...form, interest: e.target.value })}
+                className="h-14 w-full border border-border rounded-sm bg-secondary px-4 font-inter text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+                aria-label="What are you reaching out about?"
+              >
+                <option value="">What are you reaching out about?</option>
+                {reasonOptions.map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
               <Textarea
                 placeholder="Tell us what you're looking for or any questions you have..."
                 rows={5}

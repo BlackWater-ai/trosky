@@ -60,12 +60,30 @@ test('destination contact requirements survive the Base44 merge', () => {
   assert.doesNotMatch(contactSection, /General Inquiries/);
 });
 
-test('the source-dominant merge retains the Vercel mobile hero video', () => {
+test('the source-dominant merge retains the original high-definition hero video', () => {
   const hero = mustExist('src/components/HeroSection.jsx');
   assert.match(hero, /<video/);
-  assert.match(hero, /\/trosky-event-hero\.mp4/);
+  assert.match(hero, /\/trosky-hero\.mp4/);
   assert.match(hero, /playsInline/);
   assert.match(hero, /First visit offer: buy one Day Pass and bring up to 3 friends on us/);
+});
+
+test('the hero uses the original high-definition video and keeps the first-visit offer readable on phones', () => {
+  const hero = mustExist('src/components/HeroSection.jsx');
+
+  assert.match(hero, /\/trosky-hero\.mp4/);
+  assert.match(hero, /text-\[\#f7d66b\]/);
+  assert.match(hero, /max-w-md/);
+  assert.match(hero, /break-words/);
+  assert.match(hero, /hidden[^\"]*sm:block/);
+});
+
+test('the facility-tour inquiry control uses the native mobile picker instead of overlaying the form', () => {
+  const contactSection = mustExist('src/components/ContactSection.jsx');
+
+  assert.match(contactSection, /<select/);
+  assert.match(contactSection, /className="h-14 w-full/);
+  assert.doesNotMatch(contactSection, /SelectContent/);
 });
 
 test('Gabe\'s August updates are reflected in the main site', () => {
