@@ -78,6 +78,15 @@ test('the hero uses the original high-definition video and keeps the first-visit
   assert.match(hero, /hidden[^\"]*sm:block/);
 });
 
+test('the first-visit offer uses the premium Trosky hero treatment', () => {
+  const hero = mustExist('src/components/HeroSection.jsx');
+
+  assert.match(hero, /rounded-2xl/);
+  assert.match(hero, /border-l-4 border-\[\#f7d66b\]/);
+  assert.match(hero, /bg-black\/70/);
+  assert.doesNotMatch(hero, /bg-primary\/95/);
+});
+
 test('the facility-tour inquiry control uses the native mobile picker instead of overlaying the form', () => {
   const contactSection = mustExist('src/components/ContactSection.jsx');
 
