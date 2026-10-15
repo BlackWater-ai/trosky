@@ -84,7 +84,20 @@ test('the first-visit offer uses the premium Trosky hero treatment', () => {
   assert.match(hero, /rounded-2xl/);
   assert.match(hero, /border-l-4 border-\[\#f7d66b\]/);
   assert.match(hero, /bg-black\/70/);
+  assert.match(hero, /text-center text-white shadow-2xl/);
   assert.doesNotMatch(hero, /bg-primary\/95/);
+});
+
+test('the desktop hero reserves space below the first-visit offer', () => {
+  const hero = mustExist('src/components/HeroSection.jsx');
+
+  assert.match(hero, /pt-52[^\"]*sm:pt-40/);
+});
+
+test('day-pass entrance animations cannot create a page-wide mobile scrollbar', () => {
+  const dayPasses = mustExist('src/components/DayPassSection.jsx');
+
+  assert.match(dayPasses, /id="daypass" className="[^"]*overflow-hidden/);
 });
 
 test('the facility-tour inquiry control uses the native mobile picker instead of overlaying the form', () => {

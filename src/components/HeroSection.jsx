@@ -33,7 +33,7 @@ export default function HeroSection({ heroImage }) {
         transition={{ delay: 0.2 }}
         className="absolute top-24 left-0 right-0 z-10 flex justify-center px-4"
       >
-        <div className="w-full max-w-md rounded-2xl border border-white/20 border-l-4 border-[#f7d66b] bg-black/70 px-5 py-3.5 text-left text-white shadow-2xl backdrop-blur-md transition-colors hover:bg-black/80 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#f7d66b]/50 sm:w-auto sm:max-w-none">
+        <div className="w-full max-w-md rounded-2xl border border-white/20 border-l-4 border-[#f7d66b] bg-black/70 px-5 py-3.5 text-center text-white shadow-2xl backdrop-blur-md transition-colors hover:bg-black/80 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#f7d66b]/50 sm:w-auto sm:max-w-none">
           <span className="mb-1 block font-inter text-[10px] font-bold tracking-[0.18em] uppercase text-[#f7d66b]">First Visit</span>
           <span className="block break-words font-display text-2xl font-bold leading-tight tracking-wide text-white sm:text-3xl">Bring the Crew</span>
           <span className="mt-1 block font-inter text-xs font-semibold leading-relaxed text-white/80 sm:text-sm">Buy one Day Pass. Bring up to 3 friends on us.</span>
@@ -41,7 +41,7 @@ export default function HeroSection({ heroImage }) {
       </motion.a>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 pt-20 text-center sm:pt-0">
+      <div className="relative z-10 mx-auto max-w-5xl px-6 pt-52 text-center sm:pt-40">
         <motion.p
           initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}

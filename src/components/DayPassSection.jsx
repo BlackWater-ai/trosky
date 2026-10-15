@@ -31,7 +31,7 @@ const scrollTo = (id) => document.querySelector(id)?.scrollIntoView({ behavior: 
 
 export default function DayPassSection() {
   return (
-    <section id="daypass" className="py-24 md:py-32 bg-secondary">
+    <section id="daypass" className="overflow-hidden py-24 md:py-32 bg-secondary">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
