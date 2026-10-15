@@ -100,7 +100,7 @@ export default function HeroSection({ heroImage }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer max-h-[800px]:hidden"
         onClick={() => scrollTo('#facility')}
       >
         <motion.span
