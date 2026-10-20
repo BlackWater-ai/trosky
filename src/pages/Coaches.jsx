@@ -136,6 +136,18 @@ export default function Coaches() {
             </p>
           </motion.div>
 
+          <div
+            role="status"
+            className="max-w-5xl mx-auto mb-8 rounded-xl bg-primary px-6 py-8 text-center text-primary-foreground shadow-sm sm:px-10"
+          >
+            <p className="font-inter text-xs font-bold uppercase tracking-[0.24em] text-primary-foreground/70 mb-2">
+              Trosky Sports Club
+            </p>
+            <p className="font-display text-4xl tracking-wider sm:text-5xl">
+              Coaches Coming Soon
+            </p>
+          </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {team.map((member, i) => (
               <motion.div
