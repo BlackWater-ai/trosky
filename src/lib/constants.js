@@ -1,5 +1,6 @@
 export const SITE_URL = 'https://troskysportsclub.com';
 export const EVENTS_VENUE_URL = 'https://trosky-4222.vercel.app/';
+export const EVENTS_INQUIRY_URL = `${EVENTS_VENUE_URL}#contact`;
 export const FLUID_BOOKING = 'https://trosky.fluidpb.com/reservations';
 export const FLUID_MEMBERSHIP = 'https://trosky.fluidpb.com/become-a-member';
 export const FLUID_ADVANTAGE = 'https://trosky.fluidpb.com/become-a-member?planId=6ab0c9f5-c114-416e-9e54-65b485f65cff';

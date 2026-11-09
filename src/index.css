@@ -124,3 +124,20 @@
     transform: scale(0.97);
   }
 }
+
+/* Event-first homepage: generous touch targets and brand accents. */
+@layer components {
+  .event-button {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 px-6 py-4 text-center font-inter text-xs font-bold uppercase tracking-wider transition-colors;
+  }
+  .event-button:focus-visible { outline: 3px solid #00a9b8; outline-offset: 4px; }
+  .event-eyebrow { @apply mb-3 font-inter text-xs font-bold uppercase tracking-[0.2em]; }
+  .event-heading { @apply font-display text-4xl leading-[1.05] tracking-wide sm:text-5xl md:text-6xl; }
+}
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 110px; }
+@media (max-width: 639px) { .event-hero { min-height: 660px; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

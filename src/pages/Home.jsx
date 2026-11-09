@@ -1,6 +1,11 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
+import EventTypesSection from '../components/EventTypesSection';
+import EventVenueSection from '../components/EventVenueSection';
+import EventInquirySection from '../components/EventInquirySection';
+import FirstVisitBanner from '../components/FirstVisitBanner';
+import MobileEventAction from '../components/MobileEventAction';
 import FacilityShowcase from '../components/FacilityShowcase';
 import FacilityGlance from '../components/FacilityGlance';
 import WhatYouCanDo from '../components/WhatYouCanDo';
@@ -19,22 +24,28 @@ import Footer from '../components/Footer';
 
 export default function Home() {
   return (
-    <div className="font-inter">
+    <div className="font-inter pb-24 lg:pb-0">
       <Navbar />
-      <HeroSection heroImage={PHOTOS.hero} />
+      <HeroSection heroImage={PHOTOS.facility} />
+      <EventTypesSection />
+      <EventVenueSection />
+      <EventInquirySection />
+      <UpcomingEventsSlider />
+      <FirstVisitBanner />
       <MembershipPromo />
+      <DayPassSection />
+      <VIPSection />
+      <ProgramsSection />
       <FacilityGlance />
       <FacilityShowcase />
       <WhatYouCanDo />
-      <DayPassSection />
-      <VIPSection />
-      <UpcomingEventsSlider />
-      <ProgramsSection />
       <AboutSection />
       <AmenitiesSection />
       <PartnersSection />
       <ContactSection />
+      <EventInquirySection final />
       <Footer />
+      <MobileEventAction />
     </div>
   );
 }

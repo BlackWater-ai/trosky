@@ -126,15 +126,15 @@ try {
 } catch {
   fail('Original high-definition Trosky hero video must be present in public/trosky-hero.mp4');
 }
-for (const snippet of ['<video', 'autoPlay', 'muted', 'loop', 'playsInline', '/trosky-hero.mp4']) {
-  if (!hero.includes(snippet)) fail(`Home hero must include video background behavior: ${snippet}`);
+for (const snippet of ['<img', 'fetchPriority="high"', 'EVENTS_INQUIRY_URL', 'Plan Your Event']) {
+  if (!hero.includes(snippet)) fail(`Event-first hero is missing: ${snippet}`);
 }
-if (!hero.includes('Bring the Crew') || !hero.includes('Buy one Day Pass. Bring up to 3 friends on us.')) {
-  fail('Home must use the refined First Visit offer treatment');
+const firstVisit = readFileSync(join(SRC, 'components/FirstVisitBanner.jsx'), 'utf8');
+if (!firstVisit.includes('Bring the Crew') || !firstVisit.includes('Buy one Day Pass. Bring up to 3 friends on us.')) {
+  fail('The approved first-visit offer must remain available below the event sections');
 }
-if (hero.includes('First Visit Offer:')) {
-  fail('Home must not use the old full-width First Visit offer strip');
-}
+if (!home.includes('<FirstVisitBanner')) fail('Home must retain the relocated first-visit offer');
+if (!home.includes('<EventTypesSection') || !home.includes('<EventInquirySection')) fail('Home must prioritize event hosting and inquiries');
 const membershipPromo = readFileSync(join(SRC, 'components/MembershipPromo.jsx'), 'utf8');
 if (!membershipPromo.includes('FLUID_ADVANTAGE') || !membershipPromo.includes('href={FLUID_ADVANTAGE}')) {
   fail('Home Founding Offer must deep-link to the Advantage plan in Fluid');

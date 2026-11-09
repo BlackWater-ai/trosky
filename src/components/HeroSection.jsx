@@ -1,124 +1,31 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ChevronDown, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowRight, ArrowDown } from 'lucide-react';
+import { EVENTS_INQUIRY_URL } from '@/lib/constants';
 
 export default function HeroSection({ heroImage }) {
-  const scrollTo = (id) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
-
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background Video */}
-      <div className="absolute inset-0">
-        <video
-          src="/trosky-hero.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-      </div>
-
-      {/* Promo Banner */}
-      <motion.a
-        href="https://trosky.fluidpb.com/become-a-member?planId=cfba0fad-d2b6-48c2-88df-691fa06ac675"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="First visit offer: buy one Day Pass and bring up to 3 friends on us"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="absolute top-24 left-0 right-0 z-10 flex justify-center px-4"
-      >
-        <div className="w-full max-w-md rounded-2xl border border-white/20 border-l-4 border-[#f7d66b] bg-black/70 px-5 py-3.5 text-center text-white shadow-2xl backdrop-blur-md transition-colors hover:bg-black/80 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#f7d66b]/50 sm:w-auto sm:max-w-none">
-          <span className="mb-1 block font-inter text-[10px] font-bold tracking-[0.18em] uppercase text-[#f7d66b]">First Visit</span>
-          <span className="block break-words font-display text-2xl font-bold leading-tight tracking-wide text-white sm:text-3xl">Bring the Crew</span>
-          <span className="mt-1 block font-inter text-xs font-semibold leading-relaxed text-white/80 sm:text-sm">Buy one Day Pass. Bring up to 3 friends on us.</span>
-        </div>
-      </motion.a>
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 pt-52 text-center sm:pt-40">
-        <motion.p
-          initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          transition={{ delay: 0.35, duration: 0.7 }}
-          className="mb-6 hidden font-inter text-sm font-medium tracking-[0.3em] text-white/70 uppercase sm:block"
-        >
-          Austin's Community Sports & Event Destination
-        </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 40, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-6xl md:text-8xl lg:text-9xl text-white tracking-wider leading-none mb-6"
-        >
-          More Than a<br />Sports Facility
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.72, duration: 0.7 }}
-          className="font-inter text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10"
-        >
-          A place to play, gather, train, and grow. Built for families, athletes, teams, and the entire Austin community.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <a
-            href="https://trosky.fluidpb.com/become-a-member?planId=cfba0fad-d2b6-48c2-88df-691fa06ac675"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white text-foreground px-8 py-4 font-inter font-bold text-sm tracking-wider uppercase rounded-sm hover:bg-white/90 hover:scale-105 active:scale-100 transition-all duration-200 flex items-center justify-center gap-2"
-          >
-            Buy a Day Pass <ArrowRight className="w-4 h-4" />
+    <section aria-labelledby="event-hero-title" className="event-hero relative flex min-h-[680px] items-center overflow-hidden bg-[#111315] text-white">
+      <img src={heroImage} alt="Trosky's outdoor event venue and gathering spaces" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+      <div className="relative mx-auto w-full max-w-7xl px-6 pb-20 pt-40 lg:px-8 lg:pb-28 lg:pt-48">
+        <p className="mb-6 font-inter text-xs font-bold uppercase tracking-[0.24em] text-[#70e0e7]">Austin, Texas · Events & Private Gatherings</p>
+        <h1 id="event-hero-title" className="max-w-4xl font-display text-[3.25rem] leading-[0.98] tracking-wide sm:text-7xl lg:text-8xl xl:text-9xl">
+          Your Next Event<br /><span className="text-[#ff5a1f]">Starts at Trosky.</span>
+        </h1>
+        <p className="mb-8 mt-6 max-w-xl font-inter text-lg leading-relaxed text-white/90 sm:text-xl">
+          Private celebrations, corporate gatherings and unforgettable events. Bring your people together at a venue made for more.
+        </p>
+        <div className="flex max-w-xl flex-col gap-3 sm:flex-row">
+          <a href={EVENTS_INQUIRY_URL} className="event-button bg-[#ff5a1f] text-[#111315] hover:bg-[#ff7545]">
+            Plan Your Event <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </a>
-          <Link
-            to="/reservations"
-            className="border border-white/50 text-white px-8 py-4 font-inter font-semibold text-sm tracking-wider uppercase rounded-sm hover:bg-white/10 hover:border-white/80 hover:scale-105 active:scale-100 transition-all duration-200"
-          >
-            Book a Court
-          </Link>
-          <button
-            onClick={() => scrollTo('#facility')}
-            className="border border-white/50 text-white px-8 py-4 font-inter font-semibold text-sm tracking-wider uppercase rounded-sm hover:bg-white/10 hover:border-white/80 hover:scale-105 active:scale-100 transition-all duration-200"
-          >
-            Explore the Facility
-          </button>
-        </motion.div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        className="hero-scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer"
-        onClick={() => scrollTo('#facility')}
-      >
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 0] }}
-          transition={{ repeat: Infinity, duration: 2, delay: 1.6 }}
-          className="font-inter text-white/40 text-[10px] tracking-[0.3em] uppercase"
-        >
-          Scroll
-        </motion.span>
-        <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center pt-1.5">
-          <motion.div
-            animate={{ y: [0, 12, 0], opacity: [1, 0.2, 1] }}
-            transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-            className="w-1.5 h-1.5 rounded-full bg-white/70"
-          />
+          <a href="#venue" className="event-button border border-white/70 text-white hover:bg-white/10">
+            Explore the Venue <ArrowDown className="h-4 w-4" aria-hidden="true" />
+          </a>
         </div>
-      </motion.div>
+        <p className="mt-8 font-inter text-xs tracking-wide text-white/70">Corporate events · Celebrations · Weddings · Private gatherings</p>
+      </div>
     </section>
   );
 }
