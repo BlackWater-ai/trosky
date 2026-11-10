@@ -60,41 +60,44 @@ test('destination contact requirements survive the Base44 merge', () => {
   assert.doesNotMatch(contactSection, /General Inquiries/);
 });
 
-test('the approved event hero uses a high-priority venue image and preserves original video assets', () => {
+test('the source-dominant merge retains the original high-definition hero video', () => {
   const hero = mustExist('src/components/HeroSection.jsx');
-  assert.match(hero, /<img src=\{heroImage\}/);
-  assert.match(hero, /fetchPriority="high"/);
-  assert.ok(existsSync(join(root, 'public/trosky-hero.mp4')));
-  assert.ok(existsSync(join(root, 'public/trosky-event-hero.mp4')));
+  assert.match(hero, /<video/);
+  assert.match(hero, /\/trosky-hero\.mp4/);
+  assert.match(hero, /playsInline/);
+  assert.match(hero, /First visit offer: buy one Day Pass and bring up to 3 friends on us/);
 });
 
-test('the first-visit offer is preserved below the event sections and stays readable on phones', () => {
-  const offer = mustExist('src/components/FirstVisitBanner.jsx');
-  assert.match(offer, /First visit offer: buy one Day Pass and bring up to 3 friends on us/);
-  assert.match(offer, /text-\[\#f7d66b\]/);
-  assert.match(offer, /max-w-md/);
-  assert.match(offer, /break-words/);
-  assert.match(offer, /FLUID_GROUP_DAY_PASS/);
-});
-
-test('the relocated first-visit offer retains its approved premium treatment', () => {
-  const offer = mustExist('src/components/FirstVisitBanner.jsx');
-  assert.match(offer, /rounded-2xl/);
-  assert.match(offer, /border-l-4 border-\[\#f7d66b\]/);
-  assert.match(offer, /bg-black\/70/);
-  assert.match(offer, /text-center text-white shadow-2xl/);
-});
-
-test('the event hero reserves room for navigation without an overlapping promotion', () => {
+test('the hero uses the original high-definition video and keeps the first-visit offer readable on phones', () => {
   const hero = mustExist('src/components/HeroSection.jsx');
-  assert.match(hero, /pt-40/);
-  assert.doesNotMatch(hero, /absolute top-24/);
+
+  assert.match(hero, /\/trosky-hero\.mp4/);
+  assert.match(hero, /text-\[\#f7d66b\]/);
+  assert.match(hero, /max-w-md/);
+  assert.match(hero, /break-words/);
+  assert.match(hero, /hidden[^\"]*sm:block/);
 });
 
-test('the event hero uses a keyboard-accessible venue link rather than a decorative scroll control', () => {
+test('the first-visit offer uses the premium Trosky hero treatment', () => {
   const hero = mustExist('src/components/HeroSection.jsx');
-  assert.match(hero, /<a href="#venue"/);
-  assert.doesNotMatch(hero, /hero-scroll-indicator/);
+
+  assert.match(hero, /rounded-2xl/);
+  assert.match(hero, /border-l-4 border-\[\#f7d66b\]/);
+  assert.match(hero, /bg-black\/70/);
+  assert.match(hero, /text-center text-white shadow-2xl/);
+  assert.doesNotMatch(hero, /bg-primary\/95/);
+});
+
+test('the desktop hero reserves space below the first-visit offer', () => {
+  const hero = mustExist('src/components/HeroSection.jsx');
+
+  assert.match(hero, /pt-52[^\"]*sm:pt-40/);
+});
+
+test('the decorative hero scroll indicator yields space to CTAs on short screens', () => {
+  const hero = mustExist('src/components/HeroSection.jsx');
+
+  assert.match(hero, /hero-scroll-indicator/);
 });
 
 test('day-pass entrance animations cannot create a page-wide mobile scrollbar', () => {

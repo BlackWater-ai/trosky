@@ -20,10 +20,7 @@ export default function Seo() {
 
   useEffect(() => {
     const canonical = `${SITE_URL}${pathname === '/' ? '/' : pathname}`;
-    const title = pathname === '/' ? 'Events & Private Gatherings in Austin | Trosky Sports Club' : TITLE;
-    const description = pathname === '/' ? 'Plan corporate events, weddings, celebrations and private gatherings at Trosky Sports Club in Austin. Explore the venue, request a tour and discover the club.' : DESCRIPTION;
-    document.title = title;
-    upsertMeta('meta[name="description"]', { name: 'description', content: description });
+    document.title = TITLE;
 
     let link = document.head.querySelector('link[rel="canonical"]');
     if (!link) {
@@ -34,11 +31,11 @@ export default function Seo() {
     link.setAttribute('href', canonical);
 
     upsertMeta('meta[property="og:url"]', { property: 'og:url', content: canonical });
-    upsertMeta('meta[property="og:title"]', { property: 'og:title', content: title });
-    upsertMeta('meta[property="og:description"]', { property: 'og:description', content: description });
+    upsertMeta('meta[property="og:title"]', { property: 'og:title', content: TITLE });
+    upsertMeta('meta[property="og:description"]', { property: 'og:description', content: DESCRIPTION });
     upsertMeta('meta[property="og:image"]', { property: 'og:image', content: OG_IMAGE });
-    upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: title });
-    upsertMeta('meta[name="twitter:description"]', { name: 'twitter:description', content: description });
+    upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: TITLE });
+    upsertMeta('meta[name="twitter:description"]', { name: 'twitter:description', content: DESCRIPTION });
     upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: OG_IMAGE });
   }, [pathname]);
 

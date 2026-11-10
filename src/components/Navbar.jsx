@@ -2,14 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { EVENTS_VENUE_URL, EVENTS_INQUIRY_URL } from '@/lib/constants';
 
 const navLinks = [
-  { label: 'Private Events', href: EVENTS_VENUE_URL, isExternal: true },
   { label: 'Home', href: '/', isPage: true },
   { label: 'Facility', href: '#facility' },
-  { label: 'Passes / Memberships', href: '#daypass' },
+  { label: 'Day Passes / Memberships', href: '#daypass' },
   { label: 'Reservations', href: '/reservations', isPage: true },
+  { label: 'Events / Venue', href: 'https://trosky-4222.vercel.app/', isExternal: true },
   { label: 'Coaches', href: '/coaches', isPage: true },
   { label: 'Partner With Trosky', href: '/partner-with-trosky', isPage: true },
 ];
@@ -31,16 +30,6 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const isLightPage = location.pathname !== '/';
-
-  useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.key === 'Escape') { setMobileOpen(false); setAboutOpen(false); setMobileAboutOpen(false); }
-    };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, []);
-
-  useEffect(() => { setMobileOpen(false); setAboutOpen(false); setMobileAboutOpen(false); }, [location.pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -67,12 +56,12 @@ export default function Navbar() {
     }
   };
 
-  const linkClass = `text-xs font-inter font-semibold tracking-wide transition-colors duration-300 hover:opacity-70 ${(scrolled || isLightPage || mobileOpen) ? 'text-foreground' : 'text-white/90'}`;
+  const linkClass = `text-xs font-inter font-semibold tracking-wide transition-colors duration-300 hover:opacity-70 ${(scrolled || isLightPage) ? 'text-foreground' : 'text-white/90'}`;
 
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        (scrolled || isLightPage || mobileOpen) ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
+        (scrolled || isLightPage) ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-24">
@@ -86,7 +75,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav */}
-            <div className="hidden xl:flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-4">
               {navLinks.map((link) => (
                 link.isExternal ? (
                   <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
@@ -107,7 +96,6 @@ export default function Navbar() {
               <div className="relative" ref={aboutRef}>
                 <button
                   onClick={() => setAboutOpen(!aboutOpen)}
-                  aria-expanded={aboutOpen}
                   className={`flex items-center gap-1 ${linkClass}`}
                 >
                   About <ChevronDown className={`w-3 h-3 transition-transform ${aboutOpen ? 'rotate-180' : ''}`} />
@@ -147,24 +135,19 @@ export default function Navbar() {
               </div>
 
               <a
-                href={EVENTS_INQUIRY_URL}
+                href="https://trosky.fluidpb.com/reservations"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#ff5a1f] text-[#111315] px-5 py-2.5 text-xs font-inter font-bold tracking-wider uppercase rounded-sm hover:opacity-90 transition-opacity"
+                className="bg-primary text-primary-foreground px-5 py-2.5 text-xs font-inter font-bold tracking-wider uppercase rounded-sm hover:opacity-90 transition-opacity"
               >
-                Plan Your Event
+                Book a Court
               </a>
             </div>
-
-            <a href={EVENTS_INQUIRY_URL} className="hidden sm:inline-flex xl:hidden event-button bg-[#ff5a1f] text-[#111315] ml-auto mr-5">Plan Your Event</a>
 
             {/* Mobile Toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label={mobileOpen ? 'Close navigation' : 'Open navigation'}
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-navigation"
-              className={`xl:hidden transition-colors ${(scrolled || isLightPage || mobileOpen) ? 'text-foreground' : 'text-white'}`}
+              className={`lg:hidden transition-colors ${(scrolled || isLightPage) ? 'text-foreground' : 'text-white'}`}
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -179,8 +162,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            id="mobile-navigation"
-            className="fixed inset-0 z-40 bg-white pt-28 pb-10 px-6 xl:hidden overflow-y-auto"
+            className="fixed inset-0 z-40 bg-white pt-28 px-6 lg:hidden overflow-y-auto"
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
@@ -219,7 +201,6 @@ export default function Navbar() {
               <div className="border-b border-border py-4">
                 <button
                   onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
-                  aria-expanded={mobileAboutOpen}
                   className="flex items-center justify-between w-full text-xl font-inter font-semibold text-foreground"
                 >
                   About <ChevronDown className={`w-5 h-5 transition-transform ${mobileAboutOpen ? 'rotate-180' : ''}`} />
@@ -260,13 +241,13 @@ export default function Navbar() {
               </div>
 
               <a
-                href={EVENTS_INQUIRY_URL}
+                href="https://trosky.fluidpb.com/reservations"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="bg-[#ff5a1f] text-[#111315] px-6 py-4 text-sm font-inter font-bold tracking-wider uppercase rounded-sm w-full mt-4 block text-center"
+                className="bg-primary text-primary-foreground px-6 py-4 text-sm font-inter font-bold tracking-wider uppercase rounded-sm w-full mt-4 block text-center"
               >
-                Plan Your Event
+                Book a Court
               </a>
             </div>
           </motion.div>

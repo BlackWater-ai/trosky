@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { EVENTS_INQUIRY_URL } from '@/lib/constants';
 
 const scrollTo = (id) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
 
 const links = [
-  { label: 'Host Event', anchor: EVENTS_INQUIRY_URL, isExternal: true },
+  { label: 'Host Event', anchor: '/events', isPage: true },
   { label: 'Partners', anchor: '#partners' },
   { label: 'Contact', anchor: '/contact-us', isPage: true },
   { label: 'Policies', anchor: '/policies', isPage: true },
@@ -31,9 +30,7 @@ export default function Footer() {
             <p className="font-inter text-white/40 text-xs tracking-widest uppercase mb-4 font-medium">Quick Links</p>
             <div className="grid grid-cols-2 gap-2">
               {links.map((l) => (
-                l.isExternal ? (
-                  <a key={l.label} href={l.anchor} className="font-inter text-white/60 text-sm text-left hover:text-white transition-colors">{l.label}</a>
-                ) : l.isPage ? (
+                l.isPage ? (
                   <Link
                     key={l.label}
                     to={l.anchor}
